@@ -8,7 +8,10 @@ const crypto = require('crypto');
 require('dotenv').config();
 const { Resend } = require('resend');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resend = null;
+if (process.env.RESEND_API_KEY) {
+  resend = new Resend(process.env.RESEND_API_KEY);
+}
 const SENDER_EMAIL = process.env.SENDER_EMAIL || 'noreply@educonnect.or.ke';
 const APP_URL = process.env.APP_URL || 'http://localhost:3000';
 
@@ -447,9 +450,6 @@ app.use(session({
   cookie: { maxAge: 24 * 60 * 60 * 1000 }
 }));
 
-// Serve static files from current directory
-app.use(express.static('.'));
-
 // ─── Auth Middleware ─────────────────────────────────────────────────────────────
 function requireAuth(req, res, next) {
   if (!req.session.userId) {
@@ -506,7 +506,7 @@ app.post('/api/auth/register', async (req, res) => {
 
     // Send verification email
     const verifyLink = `${APP_URL}/verify-email.html?token=${verificationToken}&email=${encodeURIComponent(email)}`;
-    if (process.env.RESEND_API_KEY) {
+    if (resend) {
       try {
         await resend.emails.send({
           from: SENDER_EMAIL,
@@ -638,7 +638,7 @@ app.post('/api/auth/forgot-password', async (req, res) => {
     const resetLink = `${APP_URL}/reset-password.html?token=${resetToken}&email=${encodeURIComponent(email)}`;
 
     // Send email via Resend
-    if (process.env.RESEND_API_KEY) {
+    if (resend) {
       try {
         await resend.emails.send({
           from: SENDER_EMAIL,
@@ -753,7 +753,7 @@ app.post('/api/auth/resend-verification', async (req, res) => {
     const verifyLink = `${APP_URL}/verify-email.html?token=${verificationToken}&email=${encodeURIComponent(email)}`;
 
     // Send email via Resend
-    if (process.env.RESEND_API_KEY) {
+    if (resend) {
       try {
         await resend.emails.send({
           from: SENDER_EMAIL,
@@ -1211,11 +1211,14 @@ app.delete('/api/admin/resources/:id', requireAdmin, (req, res) => {
   }
 });
 
+// ─── Serve Static Files (after API routes) ───────────────────────────────────────
+app.use(express.static('.'));
+
 // ─── Server Start ────────────────────────────────────────────────────────────────
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`\n🚀 EduConnect Kenya server running at http://localhost:${PORT}`);
-  if (process.env.RESEND_API_KEY) {
+  if (resend) {
     console.log(`✅ Resend email service configured`);
   } else {
     console.log(`⚠️  Resend API key not configured. Verification links will be logged to console.`);
