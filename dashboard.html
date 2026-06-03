@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduConnect Kenya — Dashboard</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/auth.css" />
+</head>
+<body data-page="dashboard">
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎓</div>
+      Edu<span>Connect</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tutor.html">AI Tutor</a></li>
+      <li><a href="lessons.html">Lesson Plans</a></li>
+      <li><a href="wellness.html">Wellness</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="digital.html">Digital Skills</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="dashboard.html" class="btn btn-ghost btn-sm">Dashboard</a>
+      <button id="logout-button" class="btn btn-primary btn-sm">Sign Out</button>
+      <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<section class="section auth-page">
+  <div class="container dashboard-root">
+    <div class="dashboard-header">
+      <div>
+        <span class="label">User Dashboard</span>
+        <h1 id="dashboard-user-name">Welcome</h1>
+        <p id="dashboard-welcome">Manage your profile, learning plans, event registrations, and community submissions.</p>
+      </div>
+      <div class="dashboard-actions">
+        <a id="admin-link" href="admin.html" class="btn btn-accent">Admin Console</a>
+      </div>
+    </div>
+
+    <div class="dashboard-summary">
+      <div class="subtitle">Role</div>
+      <div id="dashboard-role" class="dashboard-role-pill">Student</div>
+    </div>
+
+    <div id="student-dashboard" class="role-panel" data-role="student"></div>
+    <div id="teacher-dashboard" class="role-panel" data-role="teacher"></div>
+    <div id="school-dashboard" class="role-panel" data-role="school"></div>
+    <div id="parent-dashboard" class="role-panel" data-role="parent"></div>
+    <div id="community-dashboard" class="role-panel" data-role="community"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <h5>EduConnect Kenya</h5>
+      <p>Your central hub for education collaboration, wellness support, and digital empowerment.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="lessons.html">Lesson Plans</a></li>
+        <li><a href="community.html">Community Hub</a></li>
+        <li><a href="careers.html">Career Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Education Partners</a></li>
+        <li><a href="#">Feedback</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

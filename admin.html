@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduConnect Kenya — Admin Dashboard</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/auth.css" />
+</head>
+<body data-page="admin">
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎓</div>
+      Edu<span>Connect</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="lessons.html">Lesson Plans</a></li>
+      <li><a href="tutor.html">AI Tutor</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="dashboard.html" class="btn btn-ghost btn-sm">Dashboard</a>
+      <button id="logout-button" class="btn btn-primary btn-sm">Sign Out</button>
+      <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<section class="section auth-page">
+  <div class="container admin-root">
+    <div class="dashboard-header">
+      <div>
+        <span class="label">Admin Dashboard</span>
+        <h1>System Monitoring & Moderation</h1>
+        <p>Review users, remove inappropriate content, and check live platform metrics.</p>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card admin-stat-card">
+        <h3 id="stat-users">0</h3>
+        <p>Total Users</p>
+      </div>
+      <div class="stat-card admin-stat-card">
+        <h3 id="stat-posts">0</h3>
+        <p>Total Forum Questions</p>
+      </div>
+      <div class="stat-card admin-stat-card">
+        <h3 id="stat-resources">0</h3>
+        <p>Total Shared Resources</p>
+      </div>
+      <div class="stat-card admin-stat-card">
+        <h3 id="stat-lessons">0</h3>
+        <p>Total Lesson Plans</p>
+      </div>
+    </div>
+
+    <div class="admin-panel-grid">
+      <section class="card table-card">
+        <h2>User Management</h2>
+        <div class="table-scroll">
+          <table class="admin-table">
+            <thead>
+              <tr><th>ID</th><th>Username</th><th>Email</th><th>Role</th><th>Full Name</th><th>Joined</th><th>Action</th></tr>
+            </thead>
+            <tbody id="users-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card table-card">
+        <h2>Forum Moderation</h2>
+        <div class="table-scroll">
+          <table class="admin-table">
+            <thead>
+              <tr><th>ID</th><th>Title</th><th>Author</th><th>Category</th><th>Likes</th><th>Created</th><th>Action</th></tr>
+            </thead>
+            <tbody id="forum-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card table-card">
+        <h2>Resource Moderation</h2>
+        <div class="table-scroll">
+          <table class="admin-table">
+            <thead>
+              <tr><th>ID</th><th>Title</th><th>Author</th><th>Subject</th><th>Downloads</th><th>Created</th><th>Action</th></tr>
+            </thead>
+            <tbody id="resources-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<script src="js/utils.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

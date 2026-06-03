@@ -149,4 +149,70 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   setActiveNavLink();
   animateProgressBars();
+  syncSessionNav();
 });
+
+async function syncSessionNav() {
+  const uiLinks = Array.from(document.querySelectorAll('.nav-cta a, .mobile-menu-overlay a'));
+  uiLinks.forEach(link => {
+    if (link.getAttribute('href') === '#join') {
+      link.href = 'login.html';
+    }
+  });
+
+  try {
+    const response = await fetch('/api/auth/status', { credentials: 'include' });
+    const status = await response.json();
+    const desktopLinks = document.querySelectorAll('.nav-cta a');
+    const mobileLinks = document.querySelectorAll('.mobile-menu-overlay .btn');
+
+    if (status.loggedIn) {
+      desktopLinks.forEach((link, index) => {
+        if (index === 0) {
+          link.textContent = 'Dashboard';
+          link.href = 'dashboard.html';
+        } else {
+          link.textContent = 'Sign Out';
+          link.href = 'javascript:void(0)';
+          link.onclick = async (event) => {
+            event.preventDefault();
+            await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+            window.location.href = 'login.html';
+          };
+        }
+      });
+      mobileLinks.forEach((link) => {
+        if (link.classList.contains('btn-ghost')) {
+          link.textContent = 'Dashboard';
+          link.href = 'dashboard.html';
+        }
+        if (link.classList.contains('btn-primary')) {
+          link.textContent = 'Sign Out';
+          link.href = 'javascript:void(0)';
+          link.onclick = async (event) => {
+            event.preventDefault();
+            await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+            window.location.href = 'login.html';
+          };
+        }
+      });
+    } else {
+      desktopLinks.forEach((link, index) => {
+        if (index === 0) {
+          link.textContent = 'Sign In';
+        } else {
+          link.textContent = 'Join Free';
+        }
+        link.href = 'login.html';
+        link.onclick = null;
+      });
+      mobileLinks.forEach((link) => {
+        link.textContent = link.classList.contains('btn-primary') ? 'Join Free' : 'Sign In';
+        link.href = 'login.html';
+        link.onclick = null;
+      });
+    }
+  } catch (err) {
+    console.error('Unable to synchronize auth navigation', err);
+  }
+}
