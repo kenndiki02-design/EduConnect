@@ -70,24 +70,67 @@ async function handleRegister(event) {
 }
 
 function bindFormActions() {
-  const loginForm = document.getElementById('login-form');
-  if (loginForm) {
-    loginForm.addEventListener('submit', handleLogin);
-  }
+  const loginForms = document.querySelectorAll('form[id^="login-form"]');
+  loginForms.forEach((form) => {
+    form.addEventListener('submit', handleLogin);
+  });
 
-  const registerForm = document.getElementById('register-form');
-  if (registerForm) {
-    registerForm.addEventListener('submit', handleRegister);
-  }
+  const registerForms = document.querySelectorAll('form[id^="register-form"]');
+  registerForms.forEach((form) => {
+    form.addEventListener('submit', handleRegister);
+  });
 
   const roleButtons = document.querySelectorAll('.role-select button[data-role]');
-  const roleInput = document.getElementById('register-role');
   roleButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      roleButtons.forEach((item) => item.classList.remove('active'));
+      const group = button.closest('.role-select');
+      if (!group) return;
+      const groupButtons = group.querySelectorAll('button[data-role]');
+      groupButtons.forEach((item) => item.classList.remove('active'));
       button.classList.add('active');
+
+      const form = button.closest('form');
+      if (!form) return;
+      const roleInput = form.querySelector('input[name="role"]');
       if (roleInput) {
         roleInput.value = button.dataset.role;
+      }
+    });
+  });
+}
+
+function bindAuthTabs() {
+  const authGroups = document.querySelectorAll('.auth-group');
+  authGroups.forEach((group) => {
+    const buttons = group.querySelectorAll('.tab-btn');
+    const contents = group.querySelectorAll('.tab-content');
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.tab;
+        buttons.forEach((item) => item.classList.remove('active'));
+        contents.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        const targetContent = group.querySelector(`.tab-content[data-tab="${target}"]`);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+  });
+}
+
+function bindAuthModeSwitch() {
+  const modeButtons = document.querySelectorAll('.auth-mode-switch .mode-btn');
+  const authGroups = document.querySelectorAll('.auth-group');
+  modeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      modeButtons.forEach((item) => item.classList.remove('active'));
+      authGroups.forEach((group) => group.classList.remove('active'));
+      button.classList.add('active');
+      const mode = button.dataset.mode;
+      const activeGroup = document.querySelector(`.auth-group.auth-group-${mode}`);
+      if (activeGroup) {
+        activeGroup.classList.add('active');
       }
     });
   });
@@ -136,10 +179,9 @@ function createStatCard(title, value, subtitle) {
 
 async function initLoginPage() {
   bindFormActions();
+  bindAuthTabs();
+  bindAuthModeSwitch();
   redirectAuthenticatedUsers();
-  if (typeof initTabs === 'function') {
-    initTabs('auth-tab-set');
-  }
 }
 
 async function initDashboardPage() {

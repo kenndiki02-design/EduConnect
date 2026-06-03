@@ -217,6 +217,26 @@ p { color: var(--text-secondary); line-height: 1.7; }
   justify-content: center;
 }
 
+/* Admin hidden link: very low-visibility but still clickable/focusable */
+.footer { position: relative; }
+.admin-hidden-link {
+  position: absolute;
+  left: 14px;
+  bottom: 6px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.04);
+  text-decoration: none;
+  pointer-events: auto;
+}
+.admin-hidden-link:focus,
+.admin-hidden-link:focus-visible {
+  outline: 2px solid var(--primary);
+  color: var(--primary);
+  background: rgba(0,168,107,0.06);
+  border-radius: 6px;
+  padding: 2px 6px;
+}
+
 /* ── Cards ── */
 .card {
   background: var(--bg-card);

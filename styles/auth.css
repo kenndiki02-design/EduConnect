@@ -54,6 +54,39 @@ body[data-page="admin"] {
   flex-wrap: wrap;
 }
 
+.auth-mode-switch {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.mode-btn {
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  color: #eef2ff;
+  padding: 12px 24px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mode-btn.active,
+.mode-btn:hover {
+  background: var(--gradient-primary);
+  color: #fff;
+  border-color: transparent;
+}
+
+.auth-group {
+  display: none;
+}
+
+.auth-group.active {
+  display: block;
+}
+
 .tab-btn {
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 999px;
@@ -103,6 +136,24 @@ body[data-page="admin"] {
   border-radius: 16px;
   background: rgba(255,255,255,0.04);
   color: var(--text-primary);
+}
+
+.role-group {
+  margin-bottom: 18px;
+}
+
+.role-group-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #cbd5e1;
+}
+
+.role-group-copy {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .role-select {
