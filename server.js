@@ -4,6 +4,14 @@ const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
+require('dotenv').config();
+const { Resend } = require('resend');
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+const SENDER_EMAIL = process.env.SENDER_EMAIL || 'noreply@educonnect.or.ke';
+const APP_URL = process.env.APP_URL || 'http://localhost:3000';
+
 let Database;
 let sqliteAvailable = true;
 
@@ -465,7 +473,7 @@ function requireAdmin(req, res, next) {
 // ═════════════════════════════════════════════════════════════════════════════════
 
 // Register
-app.post('/api/auth/register', (req, res) => {
+app.post('/api/auth/register', async (req, res) => {
   try {
     const { username, email, password, role, full_name } = req.body;
 
@@ -484,15 +492,55 @@ app.post('/api/auth/register', (req, res) => {
     }
 
     const hashedPassword = bcrypt.hashSync(password, 10);
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+    
     const result = db.prepare(
-      'INSERT INTO users (username, email, password_hash, role, full_name) VALUES (?, ?, ?, ?, ?)'
-    ).run(username, email, hashedPassword, role, full_name || '');
+      'INSERT INTO users (username, email, password_hash, role, full_name, email_verification_token) VALUES (?, ?, ?, ?, ?, ?)'
+    ).run(username, email, hashedPassword, role, full_name || '', verificationToken);
 
     req.session.userId = result.lastInsertRowid;
     req.session.username = username;
     req.session.email = email;
     req.session.role = role;
     req.session.fullName = full_name || '';
+
+    // Send verification email
+    const verifyLink = `${APP_URL}/verify-email.html?token=${verificationToken}&email=${encodeURIComponent(email)}`;
+    if (process.env.RESEND_API_KEY) {
+      try {
+        await resend.emails.send({
+          from: SENDER_EMAIL,
+          to: email,
+          subject: '🎓 Welcome to EduConnect Kenya - Verify Your Email',
+          html: `
+            <h2>Welcome to EduConnect Kenya! 🇰🇪</h2>
+            <p>Hi ${username},</p>
+            <p>Thank you for joining EduConnect Kenya! Please verify your email address to activate your account:</p>
+            <p><a href="${verifyLink}" style="background: #00A86B; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block;">Verify Email</a></p>
+            <p>Or copy this link: <br><code>${verifyLink}</code></p>
+            <p>Once verified, you'll have full access to:</p>
+            <ul>
+              <li>🤖 AI Tutoring System</li>
+              <li>📝 Lesson Plan Generator</li>
+              <li>💚 Wellness Resources</li>
+              <li>🚀 Career Guidance</li>
+              <li>💻 Digital Skills Training</li>
+              <li>🤝 Community Hub</li>
+            </ul>
+            <p><strong>This link expires in 24 hours.</strong></p>
+            <br>
+            <p>Best regards,<br>EduConnect Kenya Team 🎓</p>
+          `
+        });
+        console.log(`✅ Welcome email sent to ${email}`);
+      } catch (emailErr) {
+        console.error('Resend error:', emailErr.message);
+        // Still proceed with registration even if email fails
+      }
+    } else {
+      // Fallback: log link for development
+      console.log(`\n✉️  Email verification link for ${email}: ${verifyLink}\n`);
+    }
 
     res.status(201).json({
       success: true,
@@ -567,7 +615,7 @@ app.post('/api/auth/logout', (req, res) => {
 });
 
 // Forgot Password - Request password reset email
-app.post('/api/auth/forgot-password', (req, res) => {
+app.post('/api/auth/forgot-password', async (req, res) => {
   try {
     const { email } = req.body;
 
@@ -581,18 +629,44 @@ app.post('/api/auth/forgot-password', (req, res) => {
       return res.json({ success: true, message: 'If an account exists, a reset link has been sent.' });
     }
 
-    const crypto = require('crypto');
     const resetToken = crypto.randomBytes(32).toString('hex');
     const expiresAt = Date.now() + 3600000; // 1 hour from now
 
     db.prepare('UPDATE users SET password_reset_token = ?, password_reset_expires = ? WHERE id = ?')
       .run(resetToken, expiresAt, user.id);
 
-    // In production, send email; for now, log the token
-    const resetLink = `http://localhost:3000/reset-password.html?token=${resetToken}&email=${encodeURIComponent(email)}`;
-    console.log(`\n🔑 Password reset link for ${email}: ${resetLink}\n`);
+    const resetLink = `${APP_URL}/reset-password.html?token=${resetToken}&email=${encodeURIComponent(email)}`;
 
-    res.json({ success: true, message: 'If an account exists, a reset link has been sent to your email.' });
+    // Send email via Resend
+    if (process.env.RESEND_API_KEY) {
+      try {
+        await resend.emails.send({
+          from: SENDER_EMAIL,
+          to: email,
+          subject: '🔑 EduConnect Kenya - Password Reset Request',
+          html: `
+            <h2>Reset Your Password</h2>
+            <p>Hi ${user.username},</p>
+            <p>We received a request to reset your password. Click the link below to create a new password:</p>
+            <p><a href="${resetLink}" style="background: #00A86B; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block;">Reset Password</a></p>
+            <p>Or copy this link: <br><code>${resetLink}</code></p>
+            <p><strong>This link expires in 1 hour.</strong></p>
+            <p>If you didn't request this, please ignore this email.</p>
+            <br>
+            <p>Best regards,<br>EduConnect Kenya Team 🇰🇪</p>
+          `
+        });
+        console.log(`✅ Password reset email sent to ${email}`);
+      } catch (emailErr) {
+        console.error('Resend error:', emailErr.message);
+        // Still return success to user even if email fails (for security)
+      }
+    } else {
+      // Fallback: log link for development
+      console.log(`\n🔑 Password reset link for ${email}: ${resetLink}\n`);
+    }
+
+    res.json({ success: true, message: 'If an account exists, a reset link has been sent.' });
   } catch (err) {
     console.error('Forgot password error:', err.message);
     res.status(500).json({ success: false, message: 'Server error during password reset request.' });
@@ -656,7 +730,7 @@ app.post('/api/auth/verify-email', (req, res) => {
 });
 
 // Resend Verification Email
-app.post('/api/auth/resend-verification', (req, res) => {
+app.post('/api/auth/resend-verification', async (req, res) => {
   try {
     const { email } = req.body;
 
@@ -673,13 +747,39 @@ app.post('/api/auth/resend-verification', (req, res) => {
       return res.json({ success: true, message: 'Email is already verified.' });
     }
 
-    const crypto = require('crypto');
     const verificationToken = crypto.randomBytes(32).toString('hex');
     db.prepare('UPDATE users SET email_verification_token = ? WHERE id = ?').run(verificationToken, user.id);
 
-    // In production, send email; for now, log the token
-    const verifyLink = `http://localhost:3000/verify-email.html?token=${verificationToken}&email=${encodeURIComponent(email)}`;
-    console.log(`\n✉️  Email verification link for ${email}: ${verifyLink}\n`);
+    const verifyLink = `${APP_URL}/verify-email.html?token=${verificationToken}&email=${encodeURIComponent(email)}`;
+
+    // Send email via Resend
+    if (process.env.RESEND_API_KEY) {
+      try {
+        await resend.emails.send({
+          from: SENDER_EMAIL,
+          to: email,
+          subject: '✉️ EduConnect Kenya - Verify Your Email',
+          html: `
+            <h2>Verify Your Email Address</h2>
+            <p>Hi there,</p>
+            <p>Thank you for registering with EduConnect Kenya! Please verify your email address to activate your account:</p>
+            <p><a href="${verifyLink}" style="background: #00A86B; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block;">Verify Email</a></p>
+            <p>Or copy this link: <br><code>${verifyLink}</code></p>
+            <p><strong>This link expires in 24 hours.</strong></p>
+            <p>If you didn't create this account, please ignore this email.</p>
+            <br>
+            <p>Best regards,<br>EduConnect Kenya Team 🇰🇪</p>
+          `
+        });
+        console.log(`✅ Verification email sent to ${email}`);
+      } catch (emailErr) {
+        console.error('Resend error:', emailErr.message);
+        // Still return success to user
+      }
+    } else {
+      // Fallback: log link for development
+      console.log(`\n✉️  Email verification link for ${email}: ${verifyLink}\n`);
+    }
 
     res.json({ success: true, message: 'Verification link has been sent to your email.' });
   } catch (err) {
@@ -1112,7 +1212,13 @@ app.delete('/api/admin/resources/:id', requireAdmin, (req, res) => {
 });
 
 // ─── Server Start ────────────────────────────────────────────────────────────────
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`EduConnect Kenya server running at http://localhost:${PORT}`);
+  console.log(`\n🚀 EduConnect Kenya server running at http://localhost:${PORT}`);
+  if (process.env.RESEND_API_KEY) {
+    console.log(`✅ Resend email service configured`);
+  } else {
+    console.log(`⚠️  Resend API key not configured. Verification links will be logged to console.`);
+    console.log(`   Set RESEND_API_KEY in .env to enable email sending.\n`);
+  }
 });
