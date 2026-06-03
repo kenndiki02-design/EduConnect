@@ -335,6 +335,10 @@ function createSqliteDb() {
       password_hash TEXT NOT NULL,
       role TEXT NOT NULL CHECK(role IN ('student','teacher','school','parent','community','admin')),
       full_name TEXT DEFAULT '',
+      email_verified INTEGER DEFAULT 0,
+      email_verification_token TEXT,
+      password_reset_token TEXT,
+      password_reset_expires INTEGER,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
 
@@ -559,6 +563,128 @@ app.post('/api/auth/logout', (req, res) => {
   } catch (err) {
     console.error('Logout error:', err.message);
     res.status(500).json({ success: false, message: 'Server error during logout.' });
+  }
+});
+
+// Forgot Password - Request password reset email
+app.post('/api/auth/forgot-password', (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ success: false, message: 'Email is required.' });
+    }
+
+    const user = db.prepare('SELECT id, username FROM users WHERE email = ?').get(email);
+    if (!user) {
+      // Don't reveal if user exists - security best practice
+      return res.json({ success: true, message: 'If an account exists, a reset link has been sent.' });
+    }
+
+    const crypto = require('crypto');
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    const expiresAt = Date.now() + 3600000; // 1 hour from now
+
+    db.prepare('UPDATE users SET password_reset_token = ?, password_reset_expires = ? WHERE id = ?')
+      .run(resetToken, expiresAt, user.id);
+
+    // In production, send email; for now, log the token
+    const resetLink = `http://localhost:3000/reset-password.html?token=${resetToken}&email=${encodeURIComponent(email)}`;
+    console.log(`\n🔑 Password reset link for ${email}: ${resetLink}\n`);
+
+    res.json({ success: true, message: 'If an account exists, a reset link has been sent to your email.' });
+  } catch (err) {
+    console.error('Forgot password error:', err.message);
+    res.status(500).json({ success: false, message: 'Server error during password reset request.' });
+  }
+});
+
+// Reset Password - Verify token and set new password
+app.post('/api/auth/reset-password', (req, res) => {
+  try {
+    const { email, token, newPassword } = req.body;
+
+    if (!email || !token || !newPassword) {
+      return res.status(400).json({ success: false, message: 'Email, token, and new password are required.' });
+    }
+
+    const user = db.prepare('SELECT id, password_reset_token, password_reset_expires FROM users WHERE email = ?').get(email);
+    if (!user) {
+      return res.status(401).json({ success: false, message: 'Invalid reset request.' });
+    }
+
+    if (user.password_reset_token !== token) {
+      return res.status(401).json({ success: false, message: 'Invalid or expired reset token.' });
+    }
+
+    if (Date.now() > user.password_reset_expires) {
+      return res.status(401).json({ success: false, message: 'Reset token has expired. Please request a new one.' });
+    }
+
+    const hashedPassword = bcrypt.hashSync(newPassword, 10);
+    db.prepare('UPDATE users SET password_hash = ?, password_reset_token = NULL, password_reset_expires = NULL WHERE id = ?')
+      .run(hashedPassword, user.id);
+
+    res.json({ success: true, message: 'Password has been reset successfully. Please log in with your new password.' });
+  } catch (err) {
+    console.error('Reset password error:', err.message);
+    res.status(500).json({ success: false, message: 'Server error during password reset.' });
+  }
+});
+
+// Verify Email Token
+app.post('/api/auth/verify-email', (req, res) => {
+  try {
+    const { token, email } = req.body;
+
+    if (!token || !email) {
+      return res.status(400).json({ success: false, message: 'Token and email are required.' });
+    }
+
+    const user = db.prepare('SELECT id FROM users WHERE email = ? AND email_verification_token = ?').get(email, token);
+    if (!user) {
+      return res.status(401).json({ success: false, message: 'Invalid or expired verification token.' });
+    }
+
+    db.prepare('UPDATE users SET email_verified = 1, email_verification_token = NULL WHERE id = ?').run(user.id);
+
+    res.json({ success: true, message: 'Email verified successfully! You can now log in.' });
+  } catch (err) {
+    console.error('Email verification error:', err.message);
+    res.status(500).json({ success: false, message: 'Server error during email verification.' });
+  }
+});
+
+// Resend Verification Email
+app.post('/api/auth/resend-verification', (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ success: false, message: 'Email is required.' });
+    }
+
+    const user = db.prepare('SELECT id, email_verified FROM users WHERE email = ?').get(email);
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found.' });
+    }
+
+    if (user.email_verified) {
+      return res.json({ success: true, message: 'Email is already verified.' });
+    }
+
+    const crypto = require('crypto');
+    const verificationToken = crypto.randomBytes(32).toString('hex');
+    db.prepare('UPDATE users SET email_verification_token = ? WHERE id = ?').run(verificationToken, user.id);
+
+    // In production, send email; for now, log the token
+    const verifyLink = `http://localhost:3000/verify-email.html?token=${verificationToken}&email=${encodeURIComponent(email)}`;
+    console.log(`\n✉️  Email verification link for ${email}: ${verifyLink}\n`);
+
+    res.json({ success: true, message: 'Verification link has been sent to your email.' });
+  } catch (err) {
+    console.error('Resend verification error:', err.message);
+    res.status(500).json({ success: false, message: 'Server error during verification resend.' });
   }
 });
 
