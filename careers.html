@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Guidance & Mentorship — EduConnect Kenya</title>
+  <meta name="description" content="Discover your ideal career path, build a professional CV, browse internship listings, and connect with mentors in Kenyan universities and industries." />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/careers.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎓</div>
+      Edu<span>Connect</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tutor.html">AI Tutor</a></li>
+      <li><a href="lessons.html">Lesson Plans</a></li>
+      <li><a href="wellness.html">Wellness</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="digital.html">Digital Skills</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html#join" class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="index.html#join" class="btn btn-primary btn-sm">Join Free</a>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu-overlay" id="mobile-menu">
+  <button class="mobile-menu-close">✕</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tutor.html">AI Tutor</a></li>
+    <li><a href="lessons.html">Lesson Plans</a></li>
+    <li><a href="wellness.html">Wellness</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="digital.html">Digital Skills</a></li>
+    <li><a href="community.html">Community</a></li>
+  </ul>
+</div>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-header-content">
+      <span class="label">🚀 Shape Your Future</span>
+      <h1>Career Guidance &amp; <span class="text-gradient">Mentorship</span></h1>
+      <p>Discover your passions, build professional documents, find local opportunities, and connect with mentors in universities and industry sectors across Kenya.</p>
+      <div class="header-badges">
+        <span class="badge badge-green">✓ Interactive Assessment</span>
+        <span class="badge badge-blue">✓ CV Builder</span>
+        <span class="badge badge-gold">✓ Local Internships</span>
+        <span class="badge badge-red">✓ 1-on-1 Mentorship</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Careers Tabs Section -->
+<section class="section-sm">
+  <div class="container">
+    <div id="careers-tabs">
+      <div class="tabs" style="max-width:850px; margin:0 auto 48px;">
+        <button class="tab-btn active" data-tab="quiz" onclick="switchTab(this, 'careers-tabs')">🧭 Career Quiz</button>
+        <button class="tab-btn" data-tab="explorer" onclick="switchTab(this, 'careers-tabs')">🔍 Pathway Explorer</button>
+        <button class="tab-btn" data-tab="cv-builder" onclick="switchTab(this, 'careers-tabs')">📄 CV Builder</button>
+        <button class="tab-btn" data-tab="opportunities" onclick="switchTab(this, 'careers-tabs')">💼 Internships</button>
+        <button class="tab-btn" data-tab="mentorship" onclick="switchTab(this, 'careers-tabs')">🤝 Mentorship</button>
+      </div>
+
+      <!-- Tab: Career Quiz -->
+      <div class="tab-content active" data-tab="quiz">
+        <div class="assessment-intro animate-on-scroll">
+          <h3 class="text-center" style="margin-bottom:12px;">Discover Your Ideal Career Path</h3>
+          <p class="text-center" style="max-width:600px; margin:0 auto 32px;">Answer these 6 questions about your skills, interests, and working preferences, and our tool will recommend tailored career pathways in Kenya.</p>
+        </div>
+        <div class="quiz-container" id="career-quiz">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quiz-progress" style="width:0%"></div>
+          </div>
+          <div class="quiz-step" id="quiz-content">
+            <!-- Populated by JS -->
+          </div>
+          <div class="quiz-nav">
+            <button class="btn btn-ghost" id="prev-btn" onclick="quizPrev()" style="display:none;">← Previous</button>
+            <button class="btn btn-primary" id="next-btn" onclick="quizNext()">Next →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Pathway Explorer -->
+      <div class="tab-content" data-tab="explorer">
+        <div class="explorer-header animate-on-scroll">
+          <h3>Kenyan Career Pathways</h3>
+          <p>Explore high-demand career pathways in Kenya, including typical academic requirements and potential courses.</p>
+        </div>
+        <div class="explorer-grid animate-on-scroll" id="explorer-grid">
+          <!-- Populated dynamically by JS or static templates -->
+        </div>
+      </div>
+
+      <!-- Tab: CV Builder -->
+      <div class="tab-content" data-tab="cv-builder">
+        <div class="cv-intro animate-on-scroll">
+          <h3>EduConnect CV Builder</h3>
+          <p>Create a clean, professional, and print-ready CV format tailored to Kenyan hiring standards in just a few clicks.</p>
+        </div>
+        <div class="cv-layout">
+          <!-- CV Form -->
+          <div class="cv-form-panel">
+            <form id="cv-form" oninput="updateCVPreview()" onsubmit="return false;">
+              <div class="form-section-title">👤 Personal Information</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" class="form-input" id="cv-name" placeholder="John Doe" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Professional Title</label>
+                  <input type="text" class="form-input" id="cv-title" placeholder="e.g. Graduate ICT Assistant" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Email Address *</label>
+                  <input type="email" class="form-input" id="cv-email" placeholder="john.doe@example.com" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Phone Number *</label>
+                  <input type="tel" class="form-input" id="cv-phone" placeholder="e.g. +254 712 345678" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Location (Town, Kenya)</label>
+                  <input type="text" class="form-input" id="cv-location" placeholder="e.g. Nairobi, Kenya" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">LinkedIn or Website</label>
+                  <input type="text" class="form-input" id="cv-link" placeholder="linkedin.com/in/johndoe" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Professional Summary</label>
+                <textarea class="form-textarea" id="cv-summary" placeholder="Brief statement about your skills, background, and career goals (1-2 sentences)..." style="min-height:70px;"></textarea>
+              </div>
+
+              <div class="form-section-title">🎓 Education</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Degree or Certificate</label>
+                  <input type="text" class="form-input" id="cv-edu-degree" placeholder="e.g. BSc in Computer Science" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Institution</label>
+                  <input type="text" class="form-input" id="cv-edu-school" placeholder="e.g. Kenyatta University" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Graduation Year</label>
+                  <input type="text" class="form-input" id="cv-edu-year" placeholder="e.g. 2026 (or Expected)" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Key Grade / Honors (Optional)</label>
+                  <input type="text" class="form-input" id="cv-edu-grade" placeholder="e.g. Second Class Upper" />
+                </div>
+              </div>
+
+              <div class="form-section-title">💼 Relevant Experience</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Job Title / Role</label>
+                  <input type="text" class="form-input" id="cv-exp-role" placeholder="e.g. ICT Intern" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Company / Organisation</label>
+                  <input type="text" class="form-input" id="cv-exp-company" placeholder="e.g. Safaricom PLC" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Duration</label>
+                  <input type="text" class="form-input" id="cv-exp-dates" placeholder="e.g. Jan 2025 – Present" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Achievements</label>
+                  <input type="text" class="form-input" id="cv-exp-desc" placeholder="e.g. Supported database configuration and solved technical issues." />
+                </div>
+              </div>
+
+              <div class="form-section-title">⚡ Skills &amp; Certifications</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Technical &amp; Soft Skills (Comma separated)</label>
+                  <input type="text" class="form-input" id="cv-skills" placeholder="e.g. HTML/CSS, Teamwork, Critical Thinking, Project Management" />
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- CV Preview -->
+          <div class="cv-preview-panel">
+            <div class="cv-preview-header">
+              <h4>📄 CV Preview</h4>
+              <button class="btn btn-ghost btn-sm" onclick="printCV()">🖨️ Print / Save PDF</button>
+            </div>
+            <div class="cv-preview-sheet" id="cv-sheet">
+              <div class="cv-sheet-header">
+                <h2 id="prev-name">YOUR FULL NAME</h2>
+                <div class="cv-sheet-title" id="prev-title">Your Professional Title</div>
+                <div class="cv-sheet-contact">
+                  <span id="prev-email">email@domain.com</span> | 
+                  <span id="prev-phone">+254 700 000000</span> | 
+                  <span id="prev-location">Nairobi, Kenya</span>
+                </div>
+                <div class="cv-sheet-link" id="prev-link">linkedin.com/in/username</div>
+              </div>
+              
+              <div class="cv-sheet-section" id="sec-summary">
+                <div class="cv-sheet-sec-title">Professional Summary</div>
+                <p id="prev-summary">Provide a professional summary detailing your career goals, key expertise, and drive. Complete the form to update this content automatically.</p>
+              </div>
+              
+              <div class="cv-sheet-section">
+                <div class="cv-sheet-sec-title">Education</div>
+                <div class="cv-sheet-item">
+                  <div class="cv-sheet-item-header">
+                    <strong id="prev-edu-degree">Bachelor of Science in Computer Science</strong>
+                    <span id="prev-edu-year">2026</span>
+                  </div>
+                  <div id="prev-edu-school">Kenyatta University</div>
+                  <div id="prev-edu-grade" class="text-muted" style="font-size:0.85rem;">Second Class Upper Division</div>
+                </div>
+              </div>
+
+              <div class="cv-sheet-section">
+                <div class="cv-sheet-sec-title">Professional Experience</div>
+                <div class="cv-sheet-item">
+                  <div class="cv-sheet-item-header">
+                    <strong id="prev-exp-role">ICT Intern</strong>
+                    <span id="prev-exp-dates">Jan 2025 – Present</span>
+                  </div>
+                  <div id="prev-exp-company">Safaricom PLC</div>
+                  <p id="prev-exp-desc">Supported database configuration and resolved technical issues. Collaborated with a team of developers on local pilot tools.</p>
+                </div>
+              </div>
+
+              <div class="cv-sheet-section">
+                <div class="cv-sheet-sec-title">Skills &amp; Attributes</div>
+                <div class="cv-sheet-skills" id="prev-skills">
+                  <!-- Generated dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: Internship Listings -->
+      <div class="tab-content" data-tab="opportunities">
+        <div class="opportunities-header animate-on-scroll">
+          <h3>Student &amp; Graduate Internships</h3>
+          <p>Gain practical experience in Kenyan universities, government institutions, and businesses.</p>
+          <div class="filter-bar" style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+            <button class="filter-btn active" data-filter="all" onclick="filterInternships('all')">All Opportunities</button>
+            <button class="filter-btn" data-filter="tech" onclick="filterInternships('tech')">Technology</button>
+            <button class="filter-btn" data-filter="education" onclick="filterInternships('education')">Education</button>
+            <button class="filter-btn" data-filter="agriculture" onclick="filterInternships('agriculture')">Agriculture</button>
+            <button class="filter-btn" data-filter="finance" onclick="filterInternships('finance')">Business / Finance</button>
+          </div>
+        </div>
+        <div class="opportunities-grid animate-on-scroll" id="opportunities-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Tab: Mentorship Connection -->
+      <div class="tab-content" data-tab="mentorship">
+        <div class="mentorship-layout">
+          <div class="mentorship-info animate-on-scroll">
+            <h3>Find Your Career Mentor</h3>
+            <p>EduConnect pairs secondary students, TVET learners, and fresh university graduates with mentors who are university students, experienced teachers, or working professionals.</p>
+            
+            <div class="mentorship-stats" style="margin:24px 0; display:flex; gap:24px;">
+              <div>
+                <strong style="font-size:1.8rem; color:var(--primary-light);">120+</strong>
+                <p style="font-size:0.8rem; color:var(--text-muted);">Active Mentors</p>
+              </div>
+              <div>
+                <strong style="font-size:1.8rem; color:var(--primary-light);">450+</strong>
+                <p style="font-size:0.8rem; color:var(--text-muted);">Matches Made</p>
+              </div>
+              <div>
+                <strong style="font-size:1.8rem; color:var(--primary-light);">98%</strong>
+                <p style="font-size:0.8rem; color:var(--text-muted);">Success Rate</p>
+              </div>
+            </div>
+
+            <div class="mentor-spotlights">
+              <h5>🌟 Featured Mentors</h5>
+              <div class="mentor-spotlight-card">
+                <div class="mentor-spot-avatar">👩‍🔬</div>
+                <div>
+                  <strong>Dr. Amina Omondi</strong>
+                  <span>Lecturer, University of Nairobi</span>
+                  <p>"Mentorship is the bridge that turns student potential into professional reality. Join us."</p>
+                </div>
+              </div>
+              <div class="mentor-spotlight-card">
+                <div class="mentor-spot-avatar">🧑‍💻</div>
+                <div>
+                  <strong>David Mutua</strong>
+                  <span>Software Engineer, Safaricom PLC</span>
+                  <p>"I remember being confused about coding tracks. I want to make the road easier for you."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mentorship-form-panel animate-on-scroll">
+            <div class="panel-header">
+              <h4>Request a Mentor Match</h4>
+              <p>Tell us about yourself, and our system will pair you with a compatible mentor.</p>
+            </div>
+            
+            <form id="mentorship-form" onsubmit="submitMentorshipRequest(event)">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" class="form-input" id="mentor-req-name" placeholder="John Doe" required />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">I am currently a... *</label>
+                  <select class="form-select" id="mentor-req-role" required>
+                    <option value="">Select Level...</option>
+                    <option value="highschool">High School Student</option>
+                    <option value="tvet">TVET / College Student</option>
+                    <option value="university">University Student</option>
+                    <option value="teacher">Teacher / Student Teacher</option>
+                    <option value="other">Other Learner</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Preferred Mentor Field *</label>
+                  <select class="form-select" id="mentor-req-field" required>
+                    <option value="">Select Field...</option>
+                    <option value="tech">ICT &amp; Software Engineering</option>
+                    <option value="education">Education &amp; Teaching</option>
+                    <option value="agriculture">Agriculture &amp; Agribusiness</option>
+                    <option value="medicine">Medicine &amp; Health Sciences</option>
+                    <option value="finance">Business, Finance &amp; Marketing</option>
+                    <option value="engineering">Mechanical / Civil Engineering</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">What do you hope to gain from this mentorship? *</label>
+                <textarea class="form-textarea" id="mentor-req-goals" placeholder="e.g. Help choosing university courses, career paths in tech, exam preparation advice..." required style="min-height:90px;"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px; margin-top:10px;">
+                Submit Mentorship Request ✉️
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p>© 2025 EduConnect Kenya · <a href="index.html" style="color:var(--primary)">Home</a></p>
+      <p>💡 Dream big, plan smart, and take action for your future.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-container"></div>
+<script src="js/utils.js"></script>
+<script src="js/careers.js"></script>
+</body>
+</html>

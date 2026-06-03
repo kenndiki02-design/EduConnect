@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduConnect Kenya — AI-Powered Community Learning Ecosystem</title>
+  <meta name="description" content="EduConnect Kenya connects universities, schools, teachers, parents and communities through AI-powered tutoring, lesson planning, mental health support, career guidance, and digital literacy training." />
+  <meta name="keywords" content="EduConnect Kenya, AI tutoring, education Kenya, community learning, mental health, career guidance, digital literacy" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/index.css" />
+</head>
+<body>
+
+<!-- ── Navigation ───────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎓</div>
+      Edu<span>Connect</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tutor.html">AI Tutor</a></li>
+      <li><a href="lessons.html">Lesson Plans</a></li>
+      <li><a href="wellness.html">Wellness</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="digital.html">Digital Skills</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#join" class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="#join" class="btn btn-primary btn-sm">Join Free</a>
+      <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay" id="mobile-menu">
+  <button class="mobile-menu-close">✕</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tutor.html">AI Tutor</a></li>
+    <li><a href="lessons.html">Lesson Plans</a></li>
+    <li><a href="wellness.html">Wellness</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="digital.html">Digital Skills</a></li>
+    <li><a href="community.html">Community</a></li>
+  </ul>
+  <div style="margin-top:24px; display:flex; gap:12px;">
+    <a href="#join" class="btn btn-ghost">Sign In</a>
+    <a href="#join" class="btn btn-primary">Join Free</a>
+  </div>
+</div>
+
+<!-- ── Hero Section ──────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <!-- Animated grid -->
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        🇰🇪 &nbsp; Made for Kenya · Powered by AI
+      </div>
+      <h1>
+        Connecting Kenya's<br />
+        <span class="text-gradient">Learning Ecosystem</span>
+      </h1>
+      <p>
+        An AI-powered platform that bridges universities, schools, teachers, parents, 
+        and communities — delivering personalized tutoring, lesson planning, wellness 
+        support, and career guidance to every learner.
+      </p>
+      <div class="hero-actions">
+        <a href="tutor.html" class="btn btn-primary btn-lg">
+          🤖 Try AI Tutor
+        </a>
+        <a href="#features" class="btn btn-ghost btn-lg">
+          Explore Platform ↓
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-number"><span data-counter="12000" data-suffix="+">0+</span></div>
+          <div class="hero-stat-label">Active Learners</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number"><span data-counter="340" data-suffix="+">0+</span></div>
+          <div class="hero-stat-label">Partner Schools</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number"><span data-counter="47" data-suffix="">0</span></div>
+          <div class="hero-stat-label">Counties Reached</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-number"><span data-counter="98" data-suffix="%">0%</span></div>
+          <div class="hero-stat-label">Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating cards decoration -->
+  <div class="hero-float-cards">
+    <div class="float-card float-card-1">
+      <span>🎯</span>
+      <div>
+        <div class="float-card-title">AI Tutor Active</div>
+        <div class="float-card-sub">245 students learning now</div>
+      </div>
+    </div>
+    <div class="float-card float-card-2">
+      <span>🧠</span>
+      <div>
+        <div class="float-card-title">Lesson Plan Generated</div>
+        <div class="float-card-sub">Grade 8 Mathematics</div>
+      </div>
+    </div>
+    <div class="float-card float-card-3">
+      <span>💚</span>
+      <div>
+        <div class="float-card-title">Wellness Check-In</div>
+        <div class="float-card-sub">Feeling better today ✓</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Trust Bar ─────────────────────────────────────── -->
+<section class="trust-bar">
+  <div class="container">
+    <p class="trust-label">Trusted by schools across Kenya</p>
+    <div class="trust-logos">
+      <div class="trust-logo">🏫 Nairobi County Schools</div>
+      <div class="trust-logo">🎓 University of Nairobi</div>
+      <div class="trust-logo">📚 KICD Kenya</div>
+      <div class="trust-logo">🌍 UNICEF Kenya</div>
+      <div class="trust-logo">🤝 Ministry of Education</div>
+      <div class="trust-logo">💻 Safaricom Foundation</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features Section ──────────────────────────────── -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="label">Platform Features</span>
+      <h2>Everything You Need to <span class="text-gradient">Learn & Grow</span></h2>
+      <p>Six powerful modules designed to support every member of Kenya's educational community — from kindergarteners to university students, teachers, parents, and beyond.</p>
+    </div>
+
+    <div class="features-grid">
+      <a href="tutor.html" class="feature-card animate-on-scroll">
+        <div class="feature-icon" style="background: linear-gradient(135deg,rgba(0,168,107,0.2),rgba(0,168,107,0.05)); color:#00D68F;">🤖</div>
+        <h3>AI Tutoring System</h3>
+        <p>Personalized academic support powered by AI. Ask questions, explore concepts, and get recommendations tailored to your learning level and curriculum.</p>
+        <div class="feature-subjects">
+          <span class="badge badge-green">Mathematics</span>
+          <span class="badge badge-blue">Science</span>
+          <span class="badge badge-gold">English</span>
+          <span class="badge badge-green">Kiswahili</span>
+        </div>
+        <div class="feature-link">Explore AI Tutor →</div>
+      </a>
+
+      <a href="lessons.html" class="feature-card animate-on-scroll">
+        <div class="feature-icon" style="background: linear-gradient(135deg,rgba(0,119,182,0.2),rgba(0,119,182,0.05)); color:#60AFFF;">📝</div>
+        <h3>Lesson Plan Generator</h3>
+        <p>Generate curriculum-aligned lesson plans, teaching activities, and assessments in minutes. Save preparation time and improve instructional quality.</p>
+        <div class="feature-subjects">
+          <span class="badge badge-blue">CBC Aligned</span>
+          <span class="badge badge-green">All Grades</span>
+          <span class="badge badge-gold">Printable</span>
+        </div>
+        <div class="feature-link">Generate Plans →</div>
+      </a>
+
+      <a href="wellness.html" class="feature-card animate-on-scroll">
+        <div class="feature-icon" style="background: linear-gradient(135deg,rgba(200,16,46,0.2),rgba(200,16,46,0.05)); color:#FF6B8A;">💚</div>
+        <h3>Mental Health & Wellness</h3>
+        <p>Access wellness resources, self-assessment tools, breathing exercises, counseling referrals, and emotional support for students, teachers, and parents.</p>
+        <div class="feature-subjects">
+          <span class="badge badge-red">Crisis Support</span>
+          <span class="badge badge-green">Self-Care</span>
+          <span class="badge badge-gold">Counseling</span>
+        </div>
+        <div class="feature-link">Find Support →</div>
+      </a>
+
+      <a href="careers.html" class="feature-card animate-on-scroll">
+        <div class="feature-icon" style="background: linear-gradient(135deg,rgba(245,166,35,0.2),rgba(245,166,35,0.05)); color:#FFD166;">🚀</div>
+        <h3>Career Guidance</h3>
+        <p>Explore career pathways, take interest assessments, build your CV, connect with mentors, and discover internship and employment opportunities.</p>
+        <div class="feature-subjects">
+          <span class="badge badge-gold">CV Builder</span>
+          <span class="badge badge-blue">Mentorship</span>
+          <span class="badge badge-green">Internships</span>
+        </div>
+        <div class="feature-link">Plan Your Career →</div>
+      </a>
+
+      <a href="digital.html" class="feature-card animate-on-scroll">
+        <div class="feature-icon" style="background: linear-gradient(135deg,rgba(139,92,246,0.2),rgba(139,92,246,0.05)); color:#A78BFA;">💻</div>
+        <h3>Digital Literacy Training</h3>
+        <p>Build essential digital skills — internet safety, online communication, content creation, and responsible technology use for the modern world.</p>
+        <div class="feature-subjects">
+          <span class="badge badge-blue">Self-Paced</span>
+          <span class="badge badge-gold">Certificates</span>
+          <span class="badge badge-green">Free Access</span>
+        </div>
+        <div class="feature-link">Start Learning →</div>
+      </a>
+
+      <a href="community.html" class="feature-card animate-on-scroll">
+        <div class="feature-icon" style="background: linear-gradient(135deg,rgba(236,72,153,0.2),rgba(236,72,153,0.05)); color:#F472B6;">🤝</div>
+        <h3>Community Hub</h3>
+        <p>Connect schools, universities, parents, and community organizations. Share resources, discuss ideas, organize events, and build lasting partnerships.</p>
+        <div class="feature-subjects">
+          <span class="badge badge-red">Forums</span>
+          <span class="badge badge-green">Events</span>
+          <span class="badge badge-blue">Resources</span>
+        </div>
+        <div class="feature-link">Join Community →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Impact Section ────────────────────────────────── -->
+<section class="section impact-section">
+  <div class="container">
+    <div class="impact-layout">
+      <div class="impact-text">
+        <span class="label">Our Impact</span>
+        <h2>Transforming Education <span class="text-gradient">Across Kenya</span></h2>
+        <p>EduConnect Kenya is bridging the digital divide and empowering learners in all 47 counties with the tools they need to succeed.</p>
+
+        <div class="impact-list">
+          <div class="impact-item animate-on-scroll">
+            <div class="impact-icon">📈</div>
+            <div>
+              <h4>Improved Academic Performance</h4>
+              <p>Students using AI Tutor show an average 34% improvement in test scores within 3 months.</p>
+            </div>
+          </div>
+          <div class="impact-item animate-on-scroll">
+            <div class="impact-icon">👩‍🏫</div>
+            <div>
+              <h4>Empowered Teachers</h4>
+              <p>Teachers save 5+ hours per week on lesson planning, spending more time with students.</p>
+            </div>
+          </div>
+          <div class="impact-item animate-on-scroll">
+            <div class="impact-icon">🌐</div>
+            <div>
+              <h4>Digital Inclusion</h4>
+              <p>Over 8,000 community members trained in digital literacy skills since 2024.</p>
+            </div>
+          </div>
+          <div class="impact-item animate-on-scroll">
+            <div class="impact-icon">💼</div>
+            <div>
+              <h4>Career Success</h4>
+              <p>78% of career guidance users secure internships or employment within 6 months.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="impact-visual">
+        <div class="impact-card-main">
+          <div class="impact-metric">
+            <span class="metric-number text-gradient" data-counter="34" data-suffix="%">0%</span>
+            <span class="metric-label">Average Score Improvement</span>
+          </div>
+          <div class="impact-metrics-grid">
+            <div class="mini-metric">
+              <span class="mini-num" data-counter="12" data-suffix="K+">0</span>
+              <span class="mini-label">Learners</span>
+            </div>
+            <div class="mini-metric">
+              <span class="mini-num" data-counter="340" data-suffix="+">0</span>
+              <span class="mini-label">Schools</span>
+            </div>
+            <div class="mini-metric">
+              <span class="mini-num" data-counter="47" data-suffix="">0</span>
+              <span class="mini-label">Counties</span>
+            </div>
+            <div class="mini-metric">
+              <span class="mini-num" data-counter="98" data-suffix="%">0%</span>
+              <span class="mini-label">Satisfaction</span>
+            </div>
+          </div>
+
+          <div class="impact-progress-section">
+            <div class="impact-progress-item">
+              <div class="flex-between" style="margin-bottom:6px;">
+                <span style="font-size:0.85rem;">Student Engagement</span>
+                <span style="font-size:0.85rem; color:var(--primary)">92%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" data-width="92%"></div></div>
+            </div>
+            <div class="impact-progress-item" style="margin-top:16px;">
+              <div class="flex-between" style="margin-bottom:6px;">
+                <span style="font-size:0.85rem;">Teacher Adoption</span>
+                <span style="font-size:0.85rem; color:var(--primary)">87%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" data-width="87%"></div></div>
+            </div>
+            <div class="impact-progress-item" style="margin-top:16px;">
+              <div class="flex-between" style="margin-bottom:6px;">
+                <span style="font-size:0.85rem;">Community Participation</span>
+                <span style="font-size:0.85rem; color:var(--primary)">74%</span>
+              </div>
+              <div class="progress-bar"><div class="progress-fill" data-width="74%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Testimonials ──────────────────────────────────── -->
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="label">Testimonials</span>
+      <h2>Voices from Our <span class="text-gradient">Community</span></h2>
+      <p>Hear from students, teachers, and parents whose lives have been transformed by EduConnect Kenya.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate-on-scroll">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"The AI Tutor helped me understand quadratic equations when I was completely lost. I went from failing to getting an A in my KCSE maths exam!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👩🏾‍🎓</div>
+          <div>
+            <div class="testimonial-name">Amina Wanjiku</div>
+            <div class="testimonial-role">Form 4 Student, Nairobi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card animate-on-scroll">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"The lesson plan generator has saved me so much time. What used to take 3 hours on Sunday now takes 20 minutes. I can focus more on my students."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👨🏾‍🏫</div>
+          <div>
+            <div class="testimonial-name">Mr. David Otieno</div>
+            <div class="testimonial-role">Science Teacher, Kisumu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card animate-on-scroll">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"Through EduConnect's career guidance, I found a mentorship program and secured an engineering internship. I never knew there were so many opportunities available!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👨🏾‍💼</div>
+          <div>
+            <div class="testimonial-name">Brian Kamau</div>
+            <div class="testimonial-role">University Student, Mombasa</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card animate-on-scroll">
+        <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+        <p class="testimonial-text">"As a parent, the wellness resources helped me understand how to support my child through exam stress. The platform brought our family closer together."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👩🏾</div>
+          <div>
+            <div class="testimonial-name">Grace Njeri</div>
+            <div class="testimonial-role">Parent, Nakuru</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA Section ───────────────────────────────────── -->
+<section class="cta-section" id="join">
+  <div class="container">
+    <div class="cta-card animate-on-scroll">
+      <div class="cta-orbs">
+        <div class="cta-orb cta-orb-1"></div>
+        <div class="cta-orb cta-orb-2"></div>
+      </div>
+      <div class="cta-content">
+        <span class="label">Get Started Today</span>
+        <h2>Join Kenya's Largest <span class="text-gradient">Learning Community</span></h2>
+        <p>Free for students, teachers, and community members. Start your journey with EduConnect Kenya today.</p>
+        <div class="cta-form" id="join-form">
+          <input type="email" id="cta-email" class="form-input cta-email-input" placeholder="Enter your email address" />
+          <button class="btn btn-primary btn-lg" onclick="handleCTASignup()">Get Started Free →</button>
+        </div>
+        <div class="cta-features">
+          <span>✅ No credit card required</span>
+          <span>✅ Free for learners</span>
+          <span>✅ Kenya-focused curriculum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="display:inline-flex; margin-bottom:12px;">
+          <div class="logo-icon">🎓</div>
+          Edu<span>Connect</span>
+        </a>
+        <p>Bridging Kenya's educational gap through AI-powered learning, mentorship, wellness support, and community collaboration.</p>
+        <div class="social-links" style="margin-top:20px;">
+          <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-link" aria-label="Facebook">f</a>
+          <a href="#" class="social-link" aria-label="YouTube">▶</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="tutor.html">AI Tutor</a></li>
+          <li><a href="lessons.html">Lesson Plans</a></li>
+          <li><a href="wellness.html">Wellness</a></li>
+          <li><a href="careers.html">Career Guidance</a></li>
+          <li><a href="digital.html">Digital Literacy</a></li>
+          <li><a href="community.html">Community</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>For</h5>
+        <ul>
+          <li><a href="#">Students</a></li>
+          <li><a href="#">Teachers</a></li>
+          <li><a href="#">Parents</a></li>
+          <li><a href="#">Schools</a></li>
+          <li><a href="#">Universities</a></li>
+          <li><a href="#">Communities</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Partners</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 EduConnect Kenya. All rights reserved. 🇰🇪</p><p>KND Tech Solutions</p>
+      <p>Empowering Learners · Strengthening Communities · Building Kenya's Future</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-container"></div>
+
+<script src="js/utils.js"></script>
+<script>
+function handleCTASignup() {
+  const email = document.getElementById('cta-email').value;
+  if (!email || !email.includes('@')) {
+    showToast('Please enter a valid email address', 'error');
+    return;
+  }
+  showToast('Welcome to EduConnect Kenya! Check your email to get started. 🎓', 'success', 4000);
+  document.getElementById('cta-email').value = '';
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>

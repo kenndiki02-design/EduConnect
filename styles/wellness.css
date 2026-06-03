@@ -1,0 +1,666 @@
+/* ============================================================
+   EduConnect Kenya — Mental Health & Wellness Page Styles
+   ============================================================ */
+
+/* ── Wellness Hero ── */
+.wellness-hero {
+  position: relative;
+  padding: calc(var(--nav-height) + 80px) 0 80px;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-darkest) 100%);
+  border-bottom: 1px solid var(--border);
+}
+
+.wellness-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wellness-orb {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(100px);
+  opacity: 0.15;
+  animation: floatOrb 12s ease-in-out infinite alternate;
+}
+
+.wellness-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: #00A86B; /* Kenya Green */
+  top: -150px;
+  right: -50px;
+}
+
+.wellness-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: #0077B6; /* Blue calm */
+  bottom: -100px;
+  left: -50px;
+  animation-delay: 4s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-40px) scale(1.1); }
+}
+
+.wellness-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.wellness-hero h1 {
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.text-gradient-wellness {
+  background: linear-gradient(135deg, #00D68F 0%, #00B4D8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.wellness-hero p {
+  font-size: 1.15rem;
+  margin-bottom: 32px;
+}
+
+/* ── Crisis Alert ── */
+.crisis-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(200, 16, 46, 0.08); /* Kenya Red tinted */
+  border: 1px solid rgba(200, 16, 46, 0.25);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  max-width: 600px;
+}
+
+.crisis-icon {
+  font-size: 1.5rem;
+  animation: shake 1.5s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0); }
+  20%, 60% { transform: rotate(-10deg); }
+  40%, 80% { transform: rotate(10deg); }
+}
+
+.crisis-alert strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--accent-light);
+  margin-bottom: 4px;
+}
+
+.crisis-alert span {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.crisis-alert a {
+  color: var(--text-primary);
+  font-weight: 700;
+  text-decoration: underline;
+  transition: var(--transition-fast);
+}
+
+.crisis-alert a:hover {
+  color: var(--accent-light);
+}
+
+/* ── Mood Tracker ── */
+.mood-tracker {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.mood-options {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.mood-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px 10px;
+  transition: var(--transition);
+  color: var(--text-secondary);
+}
+
+.mood-btn:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+
+.mood-btn.active {
+  border-color: var(--primary);
+  background: rgba(0, 168, 107, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 168, 107, 0.15);
+  color: var(--text-primary);
+}
+
+.mood-emoji {
+  font-size: 2.2rem;
+  transition: var(--transition);
+}
+
+.mood-btn:hover .mood-emoji {
+  transform: scale(1.15);
+}
+
+.mood-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.mood-response {
+  margin-top: 24px;
+  padding: 16px 24px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ── Wellness Tabs Section ── */
+.wellness-tabs-section {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Quiz Styling ── */
+.quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.quiz-progress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  width: 100%;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0%;
+}
+
+.quiz-step {
+  padding: 40px;
+  min-height: 280px;
+}
+
+.quiz-counter {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.quiz-question {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.quiz-option:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.quiz-option.selected {
+  border-color: var(--primary);
+  background: rgba(0, 168, 107, 0.05);
+}
+
+.quiz-option-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.quiz-option.selected .quiz-option-radio {
+  border-color: var(--primary);
+}
+
+.quiz-option.selected .quiz-option-radio::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+}
+
+.quiz-option-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.quiz-option.selected .quiz-option-text {
+  color: var(--text-primary);
+}
+
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px 40px;
+}
+
+/* Quiz Results Card */
+.quiz-results-card {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.quiz-results-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.quiz-score-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: var(--radius-full);
+  border: 4px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.quiz-results-card.success .quiz-score-circle { border-color: #00D68F; }
+.quiz-results-card.warning .quiz-score-circle { border-color: #FFD166; }
+.quiz-results-card.danger .quiz-score-circle  { border-color: #FF3855; }
+
+.score-val {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.score-max {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.quiz-results-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.quiz-results-card.success h4 { color: #00D68F; }
+.quiz-results-card.warning h4 { color: #FFD166; }
+.quiz-results-card.danger h4  { color: #FF3855; }
+
+.quiz-results-card p {
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ── Breathing Exercise ── */
+.breathing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+}
+
+.breathing-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.breathing-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary-light);
+  margin-bottom: 8px;
+}
+
+.breathing-card h4 {
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.breathing-card p {
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  min-height: 60px;
+}
+
+.breathing-animator {
+  max-width: 600px;
+  margin: 40px auto 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.breath-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, rgba(0, 168, 107, 0.2) 0%, rgba(6, 8, 16, 0) 70%);
+  border: 2px solid rgba(0, 168, 107, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.breath-circle::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: var(--radius-full);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.breath-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.breath-count {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--primary-light);
+  line-height: 1;
+}
+
+.breath-instruction {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  text-align: center;
+  min-height: 24px;
+}
+
+.breath-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.breath-rounds {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* ── Resources ── */
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.resource-topic-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.resource-topic-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.resource-topic-card h4 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.resource-topic-card p {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.resource-tips {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.resource-tips li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 20px;
+}
+
+.resource-tips li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ── Counseling ── */
+.counseling-intro, .counseling-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.counseling-intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.counseling-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.counselor-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.counselor-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+}
+
+.counselor-card.urgent {
+  border-color: rgba(200, 16, 46, 0.4);
+  background: linear-gradient(180deg, rgba(200, 16, 46, 0.05) 0%, var(--bg-card) 100%);
+  box-shadow: 0 4px 24px rgba(200, 16, 46, 0.1);
+}
+
+.counselor-card.urgent:hover {
+  border-color: rgba(200, 16, 46, 0.6);
+}
+
+.counselor-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.urgent .counselor-badge {
+  background: rgba(200, 16, 46, 0.15);
+  color: var(--accent-light);
+}
+
+.counselor-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.counselor-card p {
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+/* ── Affirmations Section ── */
+.affirmations-section {
+  padding: 96px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.affirmations-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 168, 107, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.affirmation-card {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  box-shadow: var(--shadow-lg);
+}
+
+.affirmation-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+/* ── Responsive Styles ── */
+@media (max-width: 992px) {
+  .counseling-grid { grid-template-columns: repeat(2, 1fr); }
+  .breathing-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .mood-options { grid-template-columns: repeat(3, 1fr); }
+  .mood-btn:nth-child(4), .mood-btn:nth-child(5) { grid-column: span 1; }
+  .resources-grid { grid-template-columns: 1fr; }
+  .counseling-grid { grid-template-columns: 1fr; }
+  .breathing-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 576px) {
+  .mood-options { grid-template-columns: repeat(2, 1fr); }
+  .mood-btn:last-child { grid-column: span 2; }
+  .quiz-step { padding: 24px; }
+  .quiz-nav { padding: 20px 24px 24px; }
+  .breathing-animator { padding: 24px; }
+  .affirmation-card { padding: 32px 24px; }
+}

@@ -1,0 +1,303 @@
+/* ============================================================
+   EduConnect Kenya — AI Tutor Page Styles
+   ============================================================ */
+
+.page-header-content {
+  max-width: 700px;
+}
+.page-header-content .label { margin-bottom: 12px; display: block; }
+.page-header-content h1 { margin-bottom: 16px; }
+.page-header-content p  { margin-bottom: 24px; font-size: 1.1rem; }
+
+.tutor-header-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ── Tutor Layout ── */
+.tutor-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* ── Sidebar ── */
+.tutor-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+}
+
+.sidebar-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.sidebar-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.subject-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.subject-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  width: 100%;
+}
+
+.subject-btn:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+}
+
+.subject-btn.active {
+  background: rgba(0,168,107,0.12);
+  color: var(--primary-light);
+  border: 1px solid rgba(0,168,107,0.2);
+}
+
+.subject-icon { font-size: 1rem; }
+
+.quick-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quick-q-btn {
+  padding: 10px 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  line-height: 1.4;
+}
+.quick-q-btn:hover {
+  border-color: var(--primary);
+  color: var(--text-primary);
+  background: rgba(0,168,107,0.05);
+}
+
+.session-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.stat-val {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--primary-light);
+}
+
+/* ── Chat Header ── */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 24px;
+  margin-bottom: 20px;
+}
+
+.chat-header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-avatar-large {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 16px rgba(0,168,107,0.3);
+}
+
+.chat-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.chat-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  animation: pulse 2s ease infinite;
+}
+
+.chat-header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Resource Panel ── */
+.resource-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.resource-panel-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-secondary);
+}
+
+.resource-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resource-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+}
+.resource-card:hover {
+  border-color: var(--border-accent);
+}
+
+.resource-icon {
+  font-size: 1.3rem;
+  width: 36px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.resource-info { flex: 1; }
+.resource-title { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+.resource-type  { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ── Tips Section ── */
+.tutor-tips-section {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.tip-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.tip-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: rgba(0,168,107,0.2);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.tip-card h4 { margin-bottom: 8px; }
+.tip-card p  { font-size: 0.875rem; }
+
+/* Code blocks in chat */
+.chat-bubble pre {
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+
+.chat-bubble code {
+  background: rgba(0,168,107,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+.chat-bubble ul, .chat-bubble ol {
+  padding-left: 16px;
+  margin-top: 8px;
+}
+.chat-bubble li { margin-bottom: 4px; font-size: 0.9rem; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .tutor-layout { grid-template-columns: 260px 1fr; }
+  .tips-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .tutor-layout { grid-template-columns: 1fr; }
+  .tutor-sidebar { position: static; }
+  .tips-grid { grid-template-columns: 1fr; }
+}

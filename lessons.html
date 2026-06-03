@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson Plan Generator — EduConnect Kenya</title>
+  <meta name="description" content="Generate CBC-aligned lesson plans, teaching activities, and assessments instantly. Save hours of preparation time with EduConnect Kenya's AI-powered lesson planning tool." />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/lessons.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎓</div>
+      Edu<span>Connect</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tutor.html">AI Tutor</a></li>
+      <li><a href="lessons.html">Lesson Plans</a></li>
+      <li><a href="wellness.html">Wellness</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="digital.html">Digital Skills</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html#join" class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="index.html#join" class="btn btn-primary btn-sm">Join Free</a>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu-overlay" id="mobile-menu">
+  <button class="mobile-menu-close">✕</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tutor.html">AI Tutor</a></li>
+    <li><a href="lessons.html">Lesson Plans</a></li>
+    <li><a href="wellness.html">Wellness</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="digital.html">Digital Skills</a></li>
+    <li><a href="community.html">Community</a></li>
+  </ul>
+</div>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-header-content">
+      <span class="label">📝 For Teachers & Student Teachers</span>
+      <h1>AI Lesson Plan <span class="text-gradient">Generator</span></h1>
+      <p>Create comprehensive, CBC-aligned lesson plans in minutes. Fill in the details below and get a complete, ready-to-use lesson plan with activities and assessments.</p>
+      <div class="tutor-header-badges">
+        <span class="badge badge-green">✓ CBC Aligned</span>
+        <span class="badge badge-blue">✓ All Subjects</span>
+        <span class="badge badge-gold">✓ Printable</span>
+        <span class="badge badge-green">✓ Downloadable</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="lessons-layout">
+
+      <!-- Generator Form -->
+      <div class="generator-panel">
+        <div class="panel-header">
+          <h3>📋 Lesson Details</h3>
+          <p>Fill in the information below to generate your lesson plan.</p>
+        </div>
+
+        <form class="lesson-form" id="lesson-form" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Subject *</label>
+              <select class="form-select" id="lp-subject" required>
+                <option value="">Select Subject...</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="English">English Language</option>
+                <option value="Kiswahili">Kiswahili</option>
+                <option value="Science & Technology">Science &amp; Technology</option>
+                <option value="Social Studies">Social Studies</option>
+                <option value="Creative Arts">Creative Arts</option>
+                <option value="Physical Education">Physical Education</option>
+                <option value="Religious Education">Religious Education (CRE/IRE/HRE)</option>
+                <option value="Biology">Biology</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Physics">Physics</option>
+                <option value="History & Government">History &amp; Government</option>
+                <option value="Geography">Geography</option>
+                <option value="Business Studies">Business Studies</option>
+                <option value="Agriculture">Agriculture</option>
+                <option value="ICT">Information &amp; Communication Technology</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Grade / Form *</label>
+              <select class="form-select" id="lp-grade" required>
+                <option value="">Select Grade...</option>
+                <optgroup label="Pre-Primary">
+                  <option>PP1</option><option>PP2</option>
+                </optgroup>
+                <optgroup label="Lower Primary">
+                  <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option>
+                </optgroup>
+                <optgroup label="Upper Primary">
+                  <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option>
+                </optgroup>
+                <optgroup label="Junior Secondary">
+                  <option>Grade 7</option><option>Grade 8</option><option>Grade 9</option>
+                </optgroup>
+                <optgroup label="Senior Secondary">
+                  <option>Form 1</option><option>Form 2</option><option>Form 3</option><option>Form 4</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Topic / Strand *</label>
+            <input type="text" class="form-input" id="lp-topic" placeholder="e.g. Quadratic Equations, Photosynthesis, Essay Writing..." required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Sub-topic</label>
+              <input type="text" class="form-input" id="lp-subtopic" placeholder="e.g. Solving by factorisation..." />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Duration (minutes)</label>
+              <select class="form-select" id="lp-duration">
+                <option value="30">30 minutes</option>
+                <option value="40" selected>40 minutes</option>
+                <option value="60">60 minutes</option>
+                <option value="80">80 minutes (double lesson)</option>
+                <option value="90">90 minutes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Number of Learners</label>
+              <input type="number" class="form-input" id="lp-learners" placeholder="e.g. 35" min="1" max="100" value="35" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Teaching Approach</label>
+              <select class="form-select" id="lp-approach">
+                <option value="inquiry">Inquiry-Based Learning</option>
+                <option value="collaborative">Collaborative Learning</option>
+                <option value="direct">Direct Instruction</option>
+                <option value="project">Project-Based Learning</option>
+                <option value="differentiated">Differentiated Instruction</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Learning Objectives (optional)</label>
+            <textarea class="form-textarea" id="lp-objectives" placeholder="What should learners be able to do by the end of the lesson? (Leave blank for AI to generate)" style="min-height:80px;"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Available Resources / Materials</label>
+            <input type="text" class="form-input" id="lp-materials" placeholder="e.g. textbooks, manila paper, markers, charts..." />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Special Considerations</label>
+            <input type="text" class="form-input" id="lp-considerations" placeholder="e.g. learners with special needs, mixed ability class..." />
+          </div>
+
+          <div class="plan-options">
+            <label class="option-toggle">
+              <input type="checkbox" id="opt-assessment" checked />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              Include Assessment Activities
+            </label>
+            <label class="option-toggle">
+              <input type="checkbox" id="opt-homework" checked />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              Include Homework / Assignment
+            </label>
+            <label class="option-toggle">
+              <input type="checkbox" id="opt-differentiation" />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              Differentiation Strategies
+            </label>
+            <label class="option-toggle">
+              <input type="checkbox" id="opt-values" checked />
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              Core Values Integration (CBC)
+            </label>
+          </div>
+
+          <button class="btn btn-primary" style="width:100%; justify-content:center; padding:16px;" id="generate-btn" onclick="generateLesson()">
+            ✨ Generate Lesson Plan
+          </button>
+        </form>
+      </div>
+
+      <!-- Output Panel -->
+      <div class="output-panel" id="output-panel">
+        <div class="output-empty" id="output-empty">
+          <div class="empty-icon">📄</div>
+          <h3>Your Lesson Plan Appears Here</h3>
+          <p>Fill in the lesson details on the left and click "Generate Lesson Plan" to create a complete, CBC-aligned lesson plan ready for your class.</p>
+          <div class="sample-plans">
+            <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.08em; font-weight:700;">Quick Demo Plans</p>
+            <button class="sample-btn" onclick="loadSample('maths')">🔢 Grade 9 Maths — Quadratic Equations</button>
+            <button class="sample-btn" onclick="loadSample('science')">🔬 Grade 7 Science — Photosynthesis</button>
+            <button class="sample-btn" onclick="loadSample('english')">📖 Form 2 English — Essay Writing</button>
+          </div>
+        </div>
+
+        <div class="output-content" id="output-content" style="display:none;">
+          <div class="output-actions">
+            <div class="output-meta" id="output-meta"></div>
+            <div class="output-buttons">
+              <button class="btn btn-ghost btn-sm" onclick="printLesson()">🖨️ Print</button>
+              <button class="btn btn-ghost btn-sm" onclick="downloadLesson()">⬇️ Download</button>
+              <button class="btn btn-primary btn-sm" onclick="regenerateLesson()">🔄 Regenerate</button>
+            </div>
+          </div>
+          <div class="lesson-output" id="lesson-output"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<section class="lessons-stats-bar">
+  <div class="container">
+    <div class="stats-bar-grid">
+      <div class="stats-bar-item">
+        <span class="stats-bar-num text-gradient" data-counter="18500" data-suffix="+">0+</span>
+        <span class="stats-bar-label">Lesson Plans Generated</span>
+      </div>
+      <div class="stats-bar-item">
+        <span class="stats-bar-num text-gradient" data-counter="4200" data-suffix="+">0+</span>
+        <span class="stats-bar-label">Active Teachers</span>
+      </div>
+      <div class="stats-bar-item">
+        <span class="stats-bar-num text-gradient" data-counter="16" data-suffix="">0</span>
+        <span class="stats-bar-label">Subjects Covered</span>
+      </div>
+      <div class="stats-bar-item">
+        <span class="stats-bar-num text-gradient" data-counter="5" data-suffix=" hrs">0</span>
+        <span class="stats-bar-label">Avg. Time Saved/Week</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toast-container"></div>
+<script src="js/utils.js"></script>
+<script src="js/lessons.js"></script>
+</body>
+</html>

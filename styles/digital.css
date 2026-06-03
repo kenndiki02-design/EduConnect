@@ -1,0 +1,487 @@
+/* ============================================================
+   EduConnect Kenya — Digital Literacy Academy Styles
+   ============================================================ */
+
+/* ── Progress Panel ── */
+.academy-progress-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  max-width: 600px;
+  margin-top: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.prog-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+}
+
+.prog-meta span:last-child {
+  color: var(--primary-light);
+}
+
+/* ── Digital Layout ── */
+.digital-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── Module Cards ── */
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.module-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-card-hover);
+}
+
+.module-card.active {
+  border-color: var(--primary);
+  background: rgba(0, 168, 107, 0.05);
+}
+
+.module-card-status {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,0.06);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.module-card-status.complete {
+  background: rgba(0, 168, 107, 0.15);
+  color: var(--primary-light);
+}
+
+.module-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.module-card h4 {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.module-card p {
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.module-card-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  font-weight: 600;
+}
+
+.module-card:hover .module-action-link {
+  color: var(--primary-light);
+}
+
+/* ── Lesson Panel ── */
+.lesson-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+  box-shadow: var(--shadow-md);
+}
+
+.lesson-empty {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.lesson-empty .empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.lesson-empty h4 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.lesson-empty p {
+  font-size: 0.875rem;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.lesson-panel-header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.lesson-panel-header h3 {
+  font-size: 1.4rem;
+  margin-top: 8px;
+  color: var(--text-primary);
+}
+
+.lesson-panel-header p {
+  font-size: 0.85rem;
+}
+
+.study-guide h5 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+
+.study-guide ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.study-guide li {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 20px;
+}
+
+.study-guide li::before {
+  content: '👉';
+  position: absolute;
+  left: 0;
+  font-size: 0.9rem;
+}
+
+.study-guide li code {
+  background: var(--bg-surface);
+  color: var(--primary-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-family: monospace;
+}
+
+/* Module Quiz Section */
+.module-quiz-section {
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.quiz-panel-header {
+  margin-bottom: 16px;
+}
+
+.quiz-panel-header h5 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+
+.quiz-panel-header p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ── Certificate Panel ── */
+.cert-panel {
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  text-align: center;
+}
+
+.cert-locked-content {
+  background: rgba(255,255,255,0.02);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.cert-locked-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  opacity: 0.5;
+}
+
+.cert-locked-content h4 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+}
+
+.cert-locked-content p {
+  font-size: 0.8rem;
+}
+
+.cert-unlocked-content {
+  background: rgba(0, 168, 107, 0.08);
+  border: 1px dashed rgba(0, 168, 107, 0.3);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  box-shadow: 0 4px 16px rgba(0, 168, 107, 0.1);
+  animation: scaleIn 0.4s ease;
+}
+
+.cert-unlocked-icon {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  animation: pulse 2s ease infinite;
+}
+
+.cert-unlocked-content h4 {
+  font-size: 1.15rem;
+  color: var(--primary-light);
+  margin-bottom: 8px;
+}
+
+.cert-unlocked-content p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ── Modal & Certificate Design ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 8, 16, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 24px 32px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h3 { font-size: 1.3rem; }
+.modal-header p { font-size: 0.85rem; }
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  padding: 8px;
+  transition: var(--transition-fast);
+}
+.modal-close:hover { color: var(--text-primary); }
+
+.modal-body {
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  background: var(--bg-surface);
+}
+
+.modal-footer {
+  padding: 20px 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Academic Certificate Paper */
+.certificate-paper {
+  background: #fdfbf7; /* Warm classic paper */
+  color: #1e293b;
+  width: 100%;
+  max-width: 780px;
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  font-family: 'Georgia', serif;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.cert-border-outer {
+  border: 6px double #c5a880; /* Elegant gold border */
+  padding: 8px;
+}
+
+.cert-border-inner {
+  border: 2px solid #c5a880;
+  padding: 40px 24px;
+}
+
+.cert-decor-top {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #856a42;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+.cert-header h2 {
+  font-family: 'Georgia', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.cert-header p {
+  font-style: italic;
+  font-size: 1rem;
+  color: #475569;
+}
+
+.cert-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  border-bottom: 1px solid #c5a880;
+  display: inline-block;
+  padding: 0 40px 8px;
+  margin: 20px 0;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.cert-body p {
+  font-size: 0.95rem;
+  color: #334155;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+.cert-body h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #856a42;
+  margin-bottom: 16px;
+  font-family: 'Georgia', serif;
+}
+
+.cert-footer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 48px;
+}
+
+.cert-sig, .cert-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+}
+
+.sig-line, .date-line {
+  border-top: 1px solid #94a3b8;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.cert-sig span, .cert-date span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.cert-date .date-line {
+  font-size: 0.9rem;
+  border-top: none;
+  font-weight: 500;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.cert-sig small {
+  font-size: 0.7rem;
+  color: #64748b;
+}
+
+/* ── Responsive Digital ── */
+@media (max-width: 1024px) {
+  .digital-layout { grid-template-columns: 1fr; }
+  .lesson-panel { position: static; margin-top: 24px; }
+}
+
+@media (max-width: 768px) {
+  .modules-grid { grid-template-columns: 1fr; }
+  .certificate-paper { padding: 24px; }
+  .cert-border-inner { padding: 24px 12px; }
+  .cert-header h2 { font-size: 1.6rem; }
+  .cert-name { font-size: 1.4rem; padding: 0 10px 4px; }
+  .cert-footer { flex-direction: column; align-items: center; gap: 28px; }
+}

@@ -1,0 +1,451 @@
+/* ============================================================
+   EduConnect Kenya — Community Hub Page Styles
+   ============================================================ */
+
+/* ── Forum Layout ── */
+.forum-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Forum Sidebar */
+.forum-sidebar {
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+}
+
+.sidebar-category-list {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.sidebar-category-list h5 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+
+.category-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition-fast);
+  margin-bottom: 4px;
+}
+
+.category-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.category-btn.active {
+  background: rgba(0, 168, 107, 0.12);
+  color: var(--primary-light);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* Forum Feed */
+.forum-feed-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feed-header {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+}
+
+/* New Post Box Form */
+.new-post-box {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 168, 107, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  animation: slideInDown 0.4s ease;
+}
+
+.new-post-box h4 {
+  font-size: 1.15rem;
+  color: var(--primary-light);
+  margin-bottom: 20px;
+}
+
+/* Forum Post Cards */
+.forum-post-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.forum-post-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.post-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  background: rgba(0, 168, 107, 0.1);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.post-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.forum-post-card h4 {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.post-body-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.post-author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.post-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.post-action-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.post-action-btn:hover {
+  color: var(--text-primary);
+}
+
+.like-btn:hover {
+  color: var(--accent-light);
+}
+
+/* ── Events Tab ── */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.event-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.event-card-body {
+  padding: 24px;
+  flex: 1;
+}
+
+.event-meta-top {
+  margin-bottom: 12px;
+}
+
+.event-date {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-light);
+}
+
+.event-card h4 {
+  font-size: 1.15rem;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.event-desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.event-meta-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.event-meta-bottom strong {
+  color: var(--text-secondary);
+}
+
+/* ── Resource Sharing Tab ── */
+.resource-sharing-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.upload-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.upload-panel .panel-header {
+  margin-bottom: 24px;
+}
+
+.upload-panel h4 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.upload-panel p {
+  font-size: 0.85rem;
+}
+
+.resources-board-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.resources-board-panel h4 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.resources-board-panel p {
+  font-size: 0.85rem;
+}
+
+.shared-resources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shared-resource-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.res-body {
+  flex: 1;
+}
+
+.res-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.res-title-row h4 {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.res-sub-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(0, 119, 182, 0.12);
+  color: #60AFFF;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.res-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.res-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ── Partnerships Tab ── */
+.partnerships-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partnership-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.partnership-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.part-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.part-school-logo {
+  font-size: 1.8rem;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.part-header h4 {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.part-partner {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.part-partner strong {
+  color: var(--primary-light);
+}
+
+.part-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.part-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+
+.part-spec {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.part-spec strong {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.part-spec span {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* ── Responsive Community ── */
+@media (max-width: 1024px) {
+  .forum-layout { grid-template-columns: 1fr; }
+  .forum-sidebar { position: static; }
+  .resource-sharing-layout { grid-template-columns: 1fr; }
+  .partnerships-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .events-grid { grid-template-columns: 1fr; }
+  .shared-resource-card { flex-direction: column; align-items: stretch; }
+  .shared-resource-card .btn { width: 100%; text-align: center; justify-content: center; }
+  .partnerships-grid { grid-template-columns: 1fr; }
+}

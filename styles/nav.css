@@ -1,0 +1,44 @@
+/* ============================================================
+   EduConnect Kenya — Navigation Component
+   ============================================================ */
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(6,8,16,0.95);
+  backdrop-filter: blur(16px);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.mobile-menu-overlay.open { display: flex; }
+
+.mobile-menu-overlay .nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.mobile-menu-overlay .nav-links a {
+  font-size: 1.25rem;
+  padding: 12px 32px;
+  border-radius: var(--radius-md);
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+}

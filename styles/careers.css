@@ -1,0 +1,507 @@
+/* ============================================================
+   EduConnect Kenya — Career Guidance & Mentorship Styles
+   ============================================================ */
+
+/* ── Header Badges ── */
+.header-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* ── Career Results specs ── */
+.career-results-card {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.career-results-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: var(--primary-light);
+}
+
+.career-details-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  text-align: left;
+  margin-top: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spec-item strong {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.spec-item span {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ── Pathway Explorer ── */
+.explorer-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.explorer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.explorer-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: var(--transition);
+}
+
+.explorer-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.explorer-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.explorer-icon {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.explorer-card-header h4 {
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.explorer-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-spec {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  gap: 8px;
+}
+
+.exp-spec strong {
+  color: var(--text-muted);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.exp-spec span {
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+/* ── CV Builder Layout ── */
+.cv-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.cv-intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cv-form-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.form-section-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-top: 24px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+}
+
+.form-section-title:first-child {
+  margin-top: 0;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+/* CV Preview Panel */
+.cv-preview-panel {
+  position: sticky;
+  top: calc(var(--nav-height) + 24px);
+}
+
+.cv-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cv-preview-sheet {
+  background: #ffffff;
+  color: #1e293b;
+  border-radius: var(--radius-md);
+  padding: 40px;
+  box-shadow: var(--shadow-lg);
+  min-height: 700px;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.cv-sheet-header {
+  text-align: center;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.cv-sheet-header h2 {
+  font-family: Arial, sans-serif;
+  color: #0f172a;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.cv-sheet-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.cv-sheet-contact {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.cv-sheet-contact a, .cv-sheet-contact span {
+  color: #475569;
+}
+
+.cv-sheet-link {
+  font-size: 0.85rem;
+  color: #0284c7;
+  margin-top: 4px;
+}
+
+.cv-sheet-section {
+  margin-bottom: 20px;
+}
+
+.cv-sheet-sec-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0f172a;
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+
+.cv-sheet-section p {
+  color: #334155;
+  font-size: 0.875rem;
+}
+
+.cv-sheet-item {
+  margin-bottom: 12px;
+}
+
+.cv-sheet-item:last-child {
+  margin-bottom: 0;
+}
+
+.cv-sheet-item-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.cv-sheet-item-header strong {
+  font-weight: 700;
+}
+
+.cv-sheet-item-header span {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.cv-sheet-item div {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.cv-sheet-item p {
+  margin-top: 6px;
+  font-size: 0.825rem;
+}
+
+.cv-sheet-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cv-skill-tag {
+  background: #f1f5f9;
+  color: #334155;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+}
+
+/* ── Internship Opportunities ── */
+.opportunities-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.filter-btn:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  background: var(--gradient-primary);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(0, 168, 107, 0.25);
+}
+
+.opportunities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.opportunity-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.opportunity-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.opp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.opp-header h4 {
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.opp-company {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+
+.opp-badge {
+  flex-shrink: 0;
+}
+
+.opp-desc {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.opp-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ── Mentorship Layout ── */
+.mentorship-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.mentor-spotlights {
+  margin-top: 32px;
+}
+
+.mentor-spotlights h5 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.mentor-spotlight-card {
+  display: flex;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.mentor-spot-avatar {
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mentor-spotlight-card strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.mentor-spotlight-card span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--primary-light);
+  margin-bottom: 8px;
+}
+
+.mentor-spotlight-card p {
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.mentorship-form-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+}
+
+.mentorship-form-panel .panel-header {
+  margin-bottom: 24px;
+}
+
+.mentorship-form-panel h4 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.mentorship-form-panel p {
+  font-size: 0.85rem;
+}
+
+/* ── Responsive Careers ── */
+@media (max-width: 1024px) {
+  .cv-layout { grid-template-columns: 1fr; }
+  .cv-preview-panel { position: static; }
+  .opportunities-grid { grid-template-columns: repeat(2, 1fr); }
+  .mentorship-layout { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .explorer-grid { grid-template-columns: repeat(2, 1fr); }
+  .opportunities-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 576px) {
+  .explorer-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .cv-preview-sheet { padding: 20px; }
+  .mentor-spotlight-card { flex-direction: column; align-items: center; text-align: center; }
+}

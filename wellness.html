@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mental Health & Wellness — EduConnect Kenya</title>
+  <meta name="description" content="Access mental health resources, wellness self-assessments, breathing exercises, counseling referrals, and emotional support for students, teachers, and parents in Kenya." />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/wellness.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎓</div>
+      Edu<span>Connect</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tutor.html">AI Tutor</a></li>
+      <li><a href="lessons.html">Lesson Plans</a></li>
+      <li><a href="wellness.html">Wellness</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="digital.html">Digital Skills</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html#join" class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="index.html#join" class="btn btn-primary btn-sm">Join Free</a>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-menu-overlay" id="mobile-menu">
+  <button class="mobile-menu-close">✕</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="tutor.html">AI Tutor</a></li>
+    <li><a href="lessons.html">Lesson Plans</a></li><li><a href="wellness.html">Wellness</a></li>
+    <li><a href="careers.html">Careers</a></li><li><a href="digital.html">Digital Skills</a></li>
+    <li><a href="community.html">Community</a></li>
+  </ul>
+</div>
+
+<!-- Hero -->
+<div class="wellness-hero">
+  <div class="wellness-hero-bg">
+    <div class="wellness-orb wellness-orb-1"></div>
+    <div class="wellness-orb wellness-orb-2"></div>
+  </div>
+  <div class="container">
+    <div class="wellness-hero-content">
+      <span class="label">💚 Your Wellbeing Matters</span>
+      <h1>Mental Health &amp; <span class="text-gradient-wellness">Wellness Hub</span></h1>
+      <p>A safe, supportive space for students, teachers, and parents. Access self-assessment tools, coping resources, breathing exercises, and counseling referrals — all designed for Kenya's learning community.</p>
+      <div class="crisis-alert">
+        <span class="crisis-icon">🚨</span>
+        <div>
+          <strong>In Crisis? Get Help Now</strong>
+          <span>Kenya Red Cross Helpline: <a href="tel:1199">1199</a> &nbsp;|&nbsp; Befrienders Kenya: <a href="tel:0722178177">0722 178 177</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mood Check-In -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="label">Daily Check-In</span>
+      <h2>How Are You <span class="text-gradient">Feeling Today?</span></h2>
+      <p>Take a moment to check in with yourself. Your feelings are valid — this is a judgment-free zone.</p>
+    </div>
+
+    <div class="mood-tracker" id="mood-tracker">
+      <div class="mood-options">
+        <button class="mood-btn" data-mood="5" data-label="Amazing" onclick="selectMood(this)">
+          <span class="mood-emoji">😄</span>
+          <span class="mood-label">Amazing</span>
+        </button>
+        <button class="mood-btn" data-mood="4" data-label="Good" onclick="selectMood(this)">
+          <span class="mood-emoji">😊</span>
+          <span class="mood-label">Good</span>
+        </button>
+        <button class="mood-btn" data-mood="3" data-label="Okay" onclick="selectMood(this)">
+          <span class="mood-emoji">😐</span>
+          <span class="mood-label">Okay</span>
+        </button>
+        <button class="mood-btn" data-mood="2" data-label="Low" onclick="selectMood(this)">
+          <span class="mood-emoji">😔</span>
+          <span class="mood-label">Low</span>
+        </button>
+        <button class="mood-btn" data-mood="1" data-label="Struggling" onclick="selectMood(this)">
+          <span class="mood-emoji">😢</span>
+          <span class="mood-label">Struggling</span>
+        </button>
+      </div>
+      <div class="mood-response" id="mood-response" style="display:none;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Wellness Tabs -->
+<section class="section-sm wellness-tabs-section">
+  <div class="container">
+    <div id="wellness-tabs">
+      <div class="tabs" style="max-width:700px; margin:0 auto 48px;">
+        <button class="tab-btn active" data-tab="assessment" onclick="switchTab(this,'wellness-tabs')">🧪 Self-Assessment</button>
+        <button class="tab-btn" data-tab="breathing" onclick="switchTab(this,'wellness-tabs')">🌬️ Breathing</button>
+        <button class="tab-btn" data-tab="resources" onclick="switchTab(this,'wellness-tabs')">📚 Resources</button>
+        <button class="tab-btn" data-tab="counseling" onclick="switchTab(this,'wellness-tabs')">🤝 Counseling</button>
+      </div>
+
+      <!-- Assessment -->
+      <div class="tab-content active" data-tab="assessment">
+        <div class="assessment-intro animate-on-scroll">
+          <h3>Wellness Self-Assessment</h3>
+          <p>This short questionnaire helps you reflect on your current mental wellbeing. It is not a clinical diagnosis — if you have concerns, please speak with a professional.</p>
+        </div>
+        <div class="quiz-container" id="wellness-quiz">
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quiz-progress" style="width:0%"></div>
+          </div>
+          <div class="quiz-step" id="quiz-content">
+            <!-- Populated by JS -->
+          </div>
+          <div class="quiz-nav">
+            <button class="btn btn-ghost" id="prev-btn" onclick="quizPrev()" style="display:none;">← Previous</button>
+            <button class="btn btn-primary" id="next-btn" onclick="quizNext()">Next →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breathing -->
+      <div class="tab-content" data-tab="breathing">
+        <div class="breathing-section animate-on-scroll">
+          <h3 class="text-center" style="margin-bottom:8px;">Breathing Exercises</h3>
+          <p class="text-center" style="margin-bottom:48px;">Simple, evidence-based techniques to calm anxiety, reduce stress, and reset your mind.</p>
+
+          <div class="breathing-grid">
+            <div class="breathing-card" id="breathing-478">
+              <div class="breathing-num">4-7-8</div>
+              <h4>Relaxing Breath</h4>
+              <p>Inhale for 4 counts, hold for 7, exhale for 8. Ideal for anxiety and exam stress.</p>
+              <button class="btn btn-primary btn-sm" onclick="startBreathing('478')">▶ Start Exercise</button>
+            </div>
+            <div class="breathing-card" id="breathing-box">
+              <div class="breathing-num">BOX</div>
+              <h4>Box Breathing</h4>
+              <p>Inhale 4, hold 4, exhale 4, hold 4. Used by Navy SEALs to stay calm under pressure.</p>
+              <button class="btn btn-primary btn-sm" onclick="startBreathing('box')">▶ Start Exercise</button>
+            </div>
+            <div class="breathing-card" id="breathing-deep">
+              <div class="breathing-num">5-5</div>
+              <h4>Deep Belly Breath</h4>
+              <p>Slow inhale for 5, slow exhale for 5. Activates the body's natural calm response.</p>
+              <button class="btn btn-primary btn-sm" onclick="startBreathing('deep')">▶ Start Exercise</button>
+            </div>
+          </div>
+
+          <!-- Breathing Animator -->
+          <div class="breathing-animator" id="breathing-animator" style="display:none;">
+            <div class="breath-circle" id="breath-circle">
+              <div class="breath-text" id="breath-text">Ready</div>
+              <div class="breath-count" id="breath-count"></div>
+            </div>
+            <div class="breath-instruction" id="breath-instruction">Press start to begin</div>
+            <div class="breath-controls">
+              <button class="btn btn-ghost" onclick="stopBreathing()">■ Stop</button>
+              <span class="breath-rounds" id="breath-rounds">Round 0/3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="tab-content" data-tab="resources">
+        <div class="resources-grid animate-on-scroll">
+          <div class="resource-topic-card">
+            <div class="resource-topic-icon">😰</div>
+            <h4>Managing Exam Stress</h4>
+            <p>Evidence-based strategies for students facing KCSE, KCPE, and other high-stakes assessments.</p>
+            <ul class="resource-tips">
+              <li>Create a structured study timetable</li>
+              <li>Take regular breaks (Pomodoro: 25 min work, 5 min rest)</li>
+              <li>Talk to someone you trust about your worries</li>
+              <li>Exercise for at least 20 minutes daily</li>
+              <li>Prioritise 7–9 hours of sleep</li>
+            </ul>
+            <button class="btn btn-ghost btn-sm" onclick="showToast('Resource downloaded!','success')">Download Guide →</button>
+          </div>
+
+          <div class="resource-topic-card">
+            <div class="resource-topic-icon">🧑‍🏫</div>
+            <h4>Teacher Burnout Prevention</h4>
+            <p>Practical self-care strategies for educators managing large workloads and emotional demands.</p>
+            <ul class="resource-tips">
+              <li>Set firm work-life boundaries</li>
+              <li>Connect with colleagues for peer support</li>
+              <li>Practice mindfulness for 10 min daily</li>
+              <li>Celebrate small classroom wins</li>
+              <li>Seek supervision or mentorship regularly</li>
+            </ul>
+            <button class="btn btn-ghost btn-sm" onclick="showToast('Resource downloaded!','success')">Download Guide →</button>
+          </div>
+
+          <div class="resource-topic-card">
+            <div class="resource-topic-icon">👨‍👩‍👧</div>
+            <h4>Supporting Your Child's Mental Health</h4>
+            <p>A guide for parents on recognising signs of distress and fostering open communication.</p>
+            <ul class="resource-tips">
+              <li>Listen actively without judgment</li>
+              <li>Look out for changes in behaviour or sleep</li>
+              <li>Avoid comparing children to peers</li>
+              <li>Create a safe, calm home environment</li>
+              <li>Know when to seek professional help</li>
+            </ul>
+            <button class="btn btn-ghost btn-sm" onclick="showToast('Resource downloaded!','success')">Download Guide →</button>
+          </div>
+
+          <div class="resource-topic-card">
+            <div class="resource-topic-icon">🌈</div>
+            <h4>Building Resilience</h4>
+            <p>Develop the mental strength to bounce back from challenges and setbacks.</p>
+            <ul class="resource-tips">
+              <li>Reframe setbacks as learning opportunities</li>
+              <li>Build a strong social support network</li>
+              <li>Maintain a gratitude journal</li>
+              <li>Develop a growth mindset</li>
+              <li>Find purpose and meaning in daily activities</li>
+            </ul>
+            <button class="btn btn-ghost btn-sm" onclick="showToast('Resource downloaded!','success')">Download Guide →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Counseling -->
+      <div class="tab-content" data-tab="counseling">
+        <div class="counseling-intro animate-on-scroll">
+          <h3>Find a Counselor</h3>
+          <p>Connect with qualified mental health professionals in Kenya. All services listed respect your privacy and confidentiality.</p>
+        </div>
+        <div class="counseling-grid animate-on-scroll">
+          <div class="counselor-card urgent">
+            <div class="counselor-badge">🚨 24/7 Crisis</div>
+            <h4>Kenya Red Cross</h4>
+            <p>Immediate emotional support and crisis intervention for anyone in Kenya.</p>
+            <a href="tel:1199" class="btn btn-accent">Call 1199 Free</a>
+          </div>
+          <div class="counselor-card">
+            <div class="counselor-badge">📞 Helpline</div>
+            <h4>Befrienders Kenya</h4>
+            <p>Emotional support and suicide prevention helpline. Confidential and non-judgmental.</p>
+            <a href="tel:0722178177" class="btn btn-ghost">0722 178 177</a>
+          </div>
+          <div class="counselor-card">
+            <div class="counselor-badge">🏥 Clinical</div>
+            <h4>Mathari National Hospital</h4>
+            <p>National referral hospital for mental health. Offers outpatient counseling services.</p>
+            <a href="tel:0203862714" class="btn btn-ghost">020 386 2714</a>
+          </div>
+          <div class="counselor-card">
+            <div class="counselor-badge">🌐 Online</div>
+            <h4>Kenyatta National Hospital</h4>
+            <p>Psychiatry and psychology outpatient services. Referral letters may be required.</p>
+            <a href="tel:0203268000" class="btn btn-ghost">020 326 8000</a>
+          </div>
+          <div class="counselor-card">
+            <div class="counselor-badge">🎓 Student</div>
+            <h4>University Counseling Units</h4>
+            <p>Most Kenyan universities offer free counseling for enrolled students. Ask your student welfare office.</p>
+            <button class="btn btn-ghost" onclick="showToast('Contact your university student services office','info',4000)">Find Yours →</button>
+          </div>
+          <div class="counselor-card">
+            <div class="counselor-badge">🏫 School</div>
+            <h4>School Guidance Counselors</h4>
+            <p>Every Kenyan school has a designated guidance and counseling teacher. Speak to yours confidentially.</p>
+            <button class="btn btn-ghost" onclick="showToast('Ask your school administration for the guidance teacher','info',4000)">Learn More →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Affirmations -->
+<section class="affirmations-section">
+  <div class="container">
+    <div class="section-header animate-on-scroll">
+      <span class="label">Daily Affirmations</span>
+      <h2>Words of <span class="text-gradient">Encouragement</span></h2>
+    </div>
+    <div class="affirmation-card animate-on-scroll" id="affirmation-display">
+      <div class="affirmation-quote" id="affirmation-text">"You are capable of amazing things. Every step forward, no matter how small, is progress."</div>
+      <button class="btn btn-ghost btn-sm" onclick="newAffirmation()" style="margin-top:20px;">New Affirmation ✨</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p>© 2025 EduConnect Kenya · <a href="index.html" style="color:var(--primary)">Home</a></p>
+      <p>💚 Mental health support is available — you are not alone.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-container"></div>
+<script src="js/utils.js"></script>
+<script src="js/wellness.js"></script>
+</body>
+</html>

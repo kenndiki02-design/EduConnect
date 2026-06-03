@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Literacy Training — EduConnect Kenya</title>
+  <meta name="description" content="Build essential digital skills in internet safety, online communication, and responsible tech use. Earn your EduConnect certificate of completion." />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/digital.css" />
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎓</div>
+      Edu<span>Connect</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="tutor.html">AI Tutor</a></li>
+      <li><a href="lessons.html">Lesson Plans</a></li>
+      <li><a href="wellness.html">Wellness</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="digital.html">Digital Skills</a></li>
+      <li><a href="community.html">Community</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html#join" class="btn btn-ghost btn-sm">Sign In</a>
+      <a href="index.html#join" class="btn btn-primary btn-sm">Join Free</a>
+      <button class="mobile-menu-btn">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu-overlay" id="mobile-menu">
+  <button class="mobile-menu-close">✕</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="tutor.html">AI Tutor</a></li>
+    <li><a href="lessons.html">Lesson Plans</a></li>
+    <li><a href="wellness.html">Wellness</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="digital.html">Digital Skills</a></li>
+    <li><a href="community.html">Community</a></li>
+  </ul>
+</div>
+
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <div class="page-header-content">
+      <span class="label">💻 Essential Future Skills</span>
+      <h1>Digital Literacy <span class="text-gradient">Academy</span></h1>
+      <p>Equip yourself with the critical skills needed for the digital age. Learn about cyber safety, online netiquette, research tricks, and AI safety. Pass all module quizzes to claim your Certificate.</p>
+      
+      <!-- Academy Progress -->
+      <div class="academy-progress-panel animate-on-scroll">
+        <div class="prog-meta">
+          <span>Overall Academy Progress</span>
+          <span id="overall-percentage">0% Complete</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="academy-progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Section -->
+<section class="section-sm">
+  <div class="container">
+    <div class="digital-layout">
+      
+      <!-- Modules Grid -->
+      <div class="modules-container">
+        <div class="section-header animate-on-scroll" style="text-align:left; margin-bottom:32px;">
+          <h3>📚 Training Modules</h3>
+          <p>Click on any module to open study tips and launch the quiz.</p>
+        </div>
+
+        <div class="modules-grid animate-on-scroll">
+          
+          <!-- Module 1 -->
+          <div class="module-card" id="mod-1" onclick="openModule(1)">
+            <div class="module-card-status" id="mod-status-1">⏳ Not Started</div>
+            <div class="module-icon">🛡️</div>
+            <h4>1. Internet Safety</h4>
+            <p>Master password security, safe browsing techniques, and how to spot local phishing scams.</p>
+            <div class="module-card-footer">
+              <span class="module-questions-count">3 Questions</span>
+              <span class="module-action-link">Open Lesson →</span>
+            </div>
+          </div>
+
+          <!-- Module 2 -->
+          <div class="module-card" id="mod-2" onclick="openModule(2)">
+            <div class="module-card-status" id="mod-status-2">⏳ Not Started</div>
+            <div class="module-icon">📧</div>
+            <h4>2. Online Communication</h4>
+            <p>Learn email etiquettes, netiquette guidelines, and managing your professional digital footprint.</p>
+            <div class="module-card-footer">
+              <span class="module-questions-count">3 Questions</span>
+              <span class="module-action-link">Open Lesson →</span>
+            </div>
+          </div>
+
+          <!-- Module 3 -->
+          <div class="module-card" id="mod-3" onclick="openModule(3)">
+            <div class="module-card-status" id="mod-status-3">⏳ Not Started</div>
+            <div class="module-icon">📄</div>
+            <h4>3. Digital Content</h4>
+            <p>Learn search engine hacks, document formatting standards, and online editing collaborations.</p>
+            <div class="module-card-footer">
+              <span class="module-questions-count">3 Questions</span>
+              <span class="module-action-link">Open Lesson →</span>
+            </div>
+          </div>
+
+          <!-- Module 4 -->
+          <div class="module-card" id="mod-4" onclick="openModule(4)">
+            <div class="module-card-status" id="mod-status-4">⏳ Not Started</div>
+            <div class="module-icon">🧠</div>
+            <h4>4. Responsible Tech</h4>
+            <p>Understand cyberbullying, screen-time balance, and ethical guidelines for generative AI tools.</p>
+            <div class="module-card-footer">
+              <span class="module-questions-count">3 Questions</span>
+              <span class="module-action-link">Open Lesson →</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Panel: Lesson View & Quiz -->
+      <div class="lesson-panel" id="lesson-panel">
+        
+        <!-- Empty State -->
+        <div class="lesson-empty" id="lesson-empty">
+          <div class="empty-icon">🖱️</div>
+          <h4>Select a Module to Learn</h4>
+          <p>Review the key study points on the right, and test your understanding to mark modules as complete.</p>
+        </div>
+
+        <!-- Active Lesson Content -->
+        <div class="lesson-content-box" id="lesson-content-box" style="display:none;">
+          <div class="lesson-panel-header">
+            <span class="badge badge-green" id="active-mod-tag">Module 1</span>
+            <h3 id="active-mod-title">Internet Safety</h3>
+            <p id="active-mod-desc">Learn key cyber safety concepts.</p>
+          </div>
+
+          <div class="study-guide">
+            <h5>📖 Quick Study Guide</h5>
+            <ul id="active-mod-study-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Interactive Quiz Area -->
+          <div class="module-quiz-section">
+            <div class="quiz-panel-header">
+              <h5>📝 Module Checkpoint</h5>
+              <p>Pass this 3-question quiz to master this module.</p>
+            </div>
+            
+            <div class="quiz-interaction-container" id="module-quiz-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Certificate Locked/Unlocked Panel -->
+        <div class="cert-panel" id="cert-panel" style="display:none;">
+          <div class="cert-locked-content" id="cert-locked" style="display:block;">
+            <div class="cert-locked-icon">🔒</div>
+            <h4>Academy Certificate Locked</h4>
+            <p>Complete all 4 training modules and score 100% on the quizzes to unlock your formal certificate.</p>
+          </div>
+          
+          <div class="cert-unlocked-content" id="cert-unlocked" style="display:none;">
+            <div class="cert-unlocked-icon">🎉</div>
+            <h4>Congratulations!</h4>
+            <p>You have mastered all modules. Fill in your name below to generate your official Digital Literacy Academy certificate.</p>
+            
+            <div class="cert-form" style="margin-top:16px;">
+              <div class="form-group" style="text-align:left;">
+                <label class="form-label">Your Name on Certificate *</label>
+                <input type="text" class="form-input" id="cert-recipient-name" placeholder="Enter your full name" oninput="updateCertName()" />
+              </div>
+              <button class="btn btn-primary btn-sm" style="width:100%; justify-content:center; margin-top:12px;" onclick="openCertModal()">
+                🎓 View &amp; Print Certificate
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Certificate Print Preview Modal Overlay -->
+<div class="modal-overlay" id="cert-modal">
+  <div class="modal-container cert-modal-container">
+    <button class="modal-close" onclick="closeModal('cert-modal')">✕</button>
+    <div class="modal-header">
+      <h3>Print Academic Certificate</h3>
+      <p>Verify details, then click Print to save your official PDF certificate.</p>
+    </div>
+    <div class="modal-body">
+      <!-- Printable Certificate Template -->
+      <div class="certificate-paper" id="certificate-print-area">
+        <div class="cert-border-outer">
+          <div class="cert-border-inner">
+            <div class="cert-decor-top">🎓 EDUCONNECT KENYA 🎓</div>
+            <div class="cert-header">
+              <h2>Certificate of Completion</h2>
+              <p>This is proudly presented to</p>
+            </div>
+            <div class="cert-name" id="cert-display-name">STUDENT NAME</div>
+            <div class="cert-body">
+              <p>for successfully completing all study modules, assessments, and practical checkpoints at the</p>
+              <h4>EduConnect Digital Literacy Academy</h4>
+              <p>covering internet safety, online communication, search indexing, and ethical AI development.</p>
+            </div>
+            <div class="cert-footer">
+              <div class="cert-sig">
+                <div class="sig-line"></div>
+                <span>Dr. Amina Omondi</span>
+                <small>Dean, Board of Mentors</small>
+              </div>
+              <div class="cert-date">
+                <div class="date-line" id="cert-display-date">June 3, 2026</div>
+                <span>Date of Issue</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('cert-modal')">Close</button>
+      <button class="btn btn-primary" onclick="printCertificate()">🖨️ Print / Save PDF</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding-top:0;">
+      <p>© 2025 EduConnect Kenya · <a href="index.html" style="color:var(--primary)">Home</a></p>
+      <p>🔒 Stay safe, think critically, and keep learning digitally.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast-container"></div>
+<script src="js/utils.js"></script>
+<script src="js/digital.js"></script>
+</body>
+</html>
