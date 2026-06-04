@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lesson Plan Generator — EduConnect Kenya</title>
   <meta name="description" content="Generate CBC-aligned lesson plans, teaching activities, and assessments instantly. Save hours of preparation time with EduConnect Kenya's AI-powered lesson planning tool." />
+  <link rel="icon" type="favicon" href="Assets/imges/Gemini_Generated_Image_b741uvb741uvb741.png" />
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/nav.css" />
   <link rel="stylesheet" href="styles/lessons.css" />
@@ -14,7 +15,7 @@
 <nav class="navbar" id="navbar">
   <div class="container">
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon">🎓</div>
+      <img src="Assets/imges/Gemini_Generated_Image_b741uvb741uvb741.png" alt="EduConnect Kenya Logo" width="24" height="24">
       Edu<span>Connect</span>
     </a>
     <ul class="nav-links">
@@ -51,7 +52,7 @@
 <div class="page-header">
   <div class="container">
     <div class="page-header-content">
-      <span class="label">📝 For Teachers & Student Teachers</span>
+      <span class="label">For Teachers & Student Teachers</span>
       <h1>AI Lesson Plan <span class="text-gradient">Generator</span></h1>
       <p>Create comprehensive, CBC-aligned lesson plans in minutes. Fill in the details below and get a complete, ready-to-use lesson plan with activities and assessments.</p>
       <div class="tutor-header-badges">
@@ -71,7 +72,7 @@
       <!-- Generator Form -->
       <div class="generator-panel">
         <div class="panel-header">
-          <h3>📋 Lesson Details</h3>
+          <h3>Lesson Details</h3>
           <p>Fill in the information below to generate your lesson plan.</p>
         </div>
 
@@ -200,7 +201,7 @@
           </div>
 
           <button class="btn btn-primary" style="width:100%; justify-content:center; padding:16px;" id="generate-btn" onclick="generateLesson()">
-            ✨ Generate Lesson Plan
+            Generate Lesson Plan
           </button>
         </form>
       </div>
@@ -208,14 +209,13 @@
       <!-- Output Panel -->
       <div class="output-panel" id="output-panel">
         <div class="output-empty" id="output-empty">
-          <div class="empty-icon">📄</div>
           <h3>Your Lesson Plan Appears Here</h3>
           <p>Fill in the lesson details on the left and click "Generate Lesson Plan" to create a complete, CBC-aligned lesson plan ready for your class.</p>
           <div class="sample-plans">
             <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:12px; text-transform:uppercase; letter-spacing:0.08em; font-weight:700;">Quick Demo Plans</p>
-            <button class="sample-btn" onclick="loadSample('maths')">🔢 Grade 9 Maths — Quadratic Equations</button>
-            <button class="sample-btn" onclick="loadSample('science')">🔬 Grade 7 Science — Photosynthesis</button>
-            <button class="sample-btn" onclick="loadSample('english')">📖 Form 2 English — Essay Writing</button>
+            <button class="sample-btn" onclick="loadSample('maths')">Grade 9 Maths — Quadratic Equations</button>
+            <button class="sample-btn" onclick="loadSample('science')">Grade 7 Science — Photosynthesis</button>
+            <button class="sample-btn" onclick="loadSample('english')">Form 2 English — Essay Writing</button>
           </div>
         </div>
 
@@ -223,9 +223,9 @@
           <div class="output-actions">
             <div class="output-meta" id="output-meta"></div>
             <div class="output-buttons">
-              <button class="btn btn-ghost btn-sm" onclick="printLesson()">🖨️ Print</button>
-              <button class="btn btn-ghost btn-sm" onclick="downloadLesson()">⬇️ Download</button>
-              <button class="btn btn-primary btn-sm" onclick="regenerateLesson()">🔄 Regenerate</button>
+              <button class="btn btn-ghost btn-sm" onclick="printLesson()">Print</button>
+              <button class="btn btn-ghost btn-sm" onclick="downloadLesson()">Download</button>
+              <button class="btn btn-primary btn-sm" onclick="regenerateLesson()">Regenerate</button>
             </div>
           </div>
           <div class="lesson-output" id="lesson-output"></div>

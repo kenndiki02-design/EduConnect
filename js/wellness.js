@@ -313,15 +313,15 @@ function showQuizResults() {
   let colorClass = '';
 
   if (score <= 4) {
-    title = "🌟 Mild Stress / Thriving";
+    title = "Mild Stress / Thriving";
     feedback = "Your score suggests you are managing stress levels exceptionally well. Continue maintaining your boundary settings, physical movement, and wellness routines. Share your tips with peers!";
     colorClass = "success";
   } else if (score <= 9) {
-    title = "⛅ Moderate Stress";
+    title = "Moderate Stress";
     feedback = "You are experiencing a moderate level of stress, which is very common in demanding academic or teaching schedules. Try to incorporate small breaks into your day, practice breathing exercises (in the next tab), and ensure you are getting adequate sleep.";
     colorClass = "warning";
   } else {
-    title = "🌧️ High Stress / Alert";
+    title = "High Stress / Alert";
     feedback = "Your responses indicate high stress or low wellbeing. You have been carrying a heavy load, and it is crucial to address it. Your mental health matters. We strongly recommend speaking with a counselor, contacting our listed free helplines, or talking to a trusted family member or mentor.";
     colorClass = "danger";
   }

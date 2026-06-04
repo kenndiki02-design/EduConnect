@@ -37,8 +37,8 @@ const approachActivities = {
 };
 
 const cbcValues = [
-  '❤️ Love','🤝 Social Justice','🌟 Respect','🏅 Excellence','🌍 Responsibility',
-  '🕊️ Integrity','✊ Patriotism','🤲 Unity',
+  'Love','Social Justice','Respect','Excellence','Responsibility',
+  'Integrity','Patriotism','Unity',
 ];
 
 // ── Load Sample Plan ─────────────────────────────────────
@@ -102,15 +102,15 @@ function generateLesson() {
 
     // Meta info
     document.getElementById('output-meta').innerHTML = `
-      <span>📚 ${subject}</span>
-      <span>🎓 ${grade}</span>
-      <span>⏱ ${duration} min</span>
-      <span>👥 ${learners} learners</span>
+      <span>${subject}</span>
+      <span> ${grade}</span>
+      <span> ${duration} min</span>
+      <span> ${learners} learners</span>
     `;
 
     document.getElementById('lesson-output').innerHTML = planHTML;
     animateProgressBars();
-    showToast('Lesson plan generated successfully! 📝', 'success');
+    showToast('Lesson plan generated successfully!', 'success');
   }, 1800);
 }
 
@@ -165,7 +165,7 @@ function buildLessonPlan({ subject, grade, topic, subtopic, duration, learners,
 
     <!-- OBJECTIVES -->
     <div class="lesson-section">
-      <div class="lesson-section-title">🎯 Learning Objectives</div>
+      <div class="lesson-section-title">Learning Objectives</div>
       <p style="margin-bottom:14px; font-size:0.875rem;">By the end of this lesson, learners should be able to:</p>
       <div class="lesson-objectives">
         ${objectives.map((obj, i) => `
@@ -178,7 +178,7 @@ function buildLessonPlan({ subject, grade, topic, subtopic, duration, learners,
 
     <!-- MATERIALS -->
     <div class="lesson-section">
-      <div class="lesson-section-title">🧰 Teaching & Learning Materials</div>
+      <div class="lesson-section-title">Teaching & Learning Materials</div>
       <div class="materials-list">
         ${materialList.map(m => `<span class="material-tag">📌 ${m}</span>`).join('')}
         <span class="material-tag">📌 Whiteboard / Chalkboard</span>
@@ -188,7 +188,7 @@ function buildLessonPlan({ subject, grade, topic, subtopic, duration, learners,
 
     <!-- LESSON PROCEDURE -->
     <div class="lesson-section">
-      <div class="lesson-section-title">📅 Lesson Procedure</div>
+      <div class="lesson-section-title">Lesson Procedure</div>
       <div class="lesson-timeline">
         ${timeline.map(t => `
           <div class="timeline-item">
@@ -203,7 +203,7 @@ function buildLessonPlan({ subject, grade, topic, subtopic, duration, learners,
 
     <!-- KEY ACTIVITIES -->
     <div class="lesson-section">
-      <div class="lesson-section-title">⚡ Key Learning Activities</div>
+      <div class="lesson-section-title">Key Learning Activities</div>
       <ul style="padding-left:20px; display:flex; flex-direction:column; gap:10px;">
         ${activities.map(a => `<li><strong>${a}</strong> — tailored to the ${topic} topic</li>`).join('')}
       </ul>
@@ -214,7 +214,7 @@ function buildLessonPlan({ subject, grade, topic, subtopic, duration, learners,
   if (inclAssessment) {
     html += `
     <div class="lesson-section">
-      <div class="lesson-section-title">📊 Assessment Strategies</div>
+      <div class="lesson-section-title">Assessment Strategies</div>
       <div class="assessment-grid">
         ${assessmentItems.map(a => `
           <div class="assessment-item">
@@ -229,7 +229,7 @@ function buildLessonPlan({ subject, grade, topic, subtopic, duration, learners,
   if (inclHomework) {
     html += `
     <div class="lesson-section">
-      <div class="lesson-section-title">📚 Homework / Extended Learning</div>
+      <div class="lesson-section-title">Homework / Extended Learning</div>
       <p>${generateHomework(subject, topic)}</p>
     </div>`;
   }
@@ -238,7 +238,7 @@ function buildLessonPlan({ subject, grade, topic, subtopic, duration, learners,
   if (inclDifferent) {
     html += `
     <div class="lesson-section">
-      <div class="lesson-section-title">🌟 Differentiation Strategies</div>
+      <div class="lesson-section-title">Differentiation Strategies</div>
       <div class="assessment-grid">
         <div class="assessment-item">
           <div class="assessment-type">Support (below level)</div>
@@ -256,7 +256,7 @@ function buildLessonPlan({ subject, grade, topic, subtopic, duration, learners,
   if (inclValues && selectedValues.length) {
     html += `
     <div class="lesson-section">
-      <div class="lesson-section-title">💚 CBC Core Values Integration</div>
+      <div class="lesson-section-title">CBC Core Values Integration</div>
       <div class="cbc-values">
         ${selectedValues.map(v => `<span class="cbc-value">${v}</span>`).join('')}
       </div>
@@ -267,7 +267,7 @@ function buildLessonPlan({ subject, grade, topic, subtopic, duration, learners,
   // Teacher reflection
   html += `
     <div class="lesson-section">
-      <div class="lesson-section-title">🪞 Teacher Reflection</div>
+      <div class="lesson-section-title">Teacher Reflection</div>
       <div class="reflection-grid">
         <div class="reflection-item">
           <label class="form-label">What went well?</label>
@@ -376,7 +376,7 @@ function downloadLesson() {
   a.href = URL.createObjectURL(blob);
   a.download = 'EduConnect_Lesson_Plan.txt';
   a.click();
-  showToast('Lesson plan downloaded! 📥', 'success');
+  showToast('Lesson plan downloaded! ', 'success');
 }
 
 // Add reflection box placeholder styling via JS

@@ -110,7 +110,7 @@ function renderQuizStep() {
 
   if (prevBtn) prevBtn.style.display = currentQuizStep === 0 ? 'none' : 'inline-flex';
   if (nextBtn) {
-    nextBtn.textContent = currentQuizStep === totalSteps - 1 ? 'See Recommendations 🧭' : 'Next →';
+    nextBtn.textContent = currentQuizStep === totalSteps - 1 ? 'See Recommendations ' : 'Next →';
   }
 
   const currentQ = careerQuestions[currentQuizStep];
@@ -167,7 +167,7 @@ function quizPrev() {
 
 const careerDetails = {
   tech: {
-    title: "💻 Technology & Software Engineering",
+    title: "Technology & Software Engineering",
     desc: "You enjoy logical analysis, problem-solving, and creating products. Kenya's tech industry (often called 'Silicon Savannah') is expanding rapidly, offering high-paying opportunities for developers, database specialists, and ICT teachers.",
     kcse: "Mean Grade of C+ or above, with good performance in Mathematics and Physics.",
     courses: "BSc in Computer Science, Business Information Technology (BBIT), or Diploma in Software Engineering / ICT (TVET colleges like KIST, Kabete National Polytechnic).",
@@ -175,7 +175,7 @@ const careerDetails = {
     demand: "Very High"
   },
   education: {
-    title: "🧑‍🏫 Education & Corporate Training",
+    title: "Education & Corporate Training",
     desc: "You have a strong passion for helping others grow and sharing knowledge. With the rollout of the Competency-Based Curriculum (CBC) in Kenya, there is steady demand for creative teachers, learning developers, and early childhood educators.",
     kcse: "Mean Grade of C+ or above, with C+ in two teaching subjects.",
     courses: "Bachelor of Education (Arts/Science), Diploma in Primary Teacher Education (DPTE) at Teacher Training Colleges (TTCs), or Early Childhood Development Education (ECDE) courses.",
@@ -183,7 +183,7 @@ const careerDetails = {
     demand: "Steady / High"
   },
   agriculture: {
-    title: "🌾 Agronomy & Agribusiness",
+    title: "Agronomy & Agribusiness",
     desc: "You appreciate nature, food security, and hands-on systems. Agriculture is the backbone of Kenya's economy. Modern careers combine technology, business, and science to build sustainable farms, export logistics, and food production plants.",
     kcse: "Mean Grade of C or above, with good grades in Biology, Chemistry, or Agriculture.",
     courses: "BSc in Agronomy, Agribusiness Management, Agricultural Engineering, or Diploma/Certificates at animal and agricultural institutes (e.g., Bukura Agricultural College, AHITI).",
@@ -191,7 +191,7 @@ const careerDetails = {
     demand: "High"
   },
   finance: {
-    title: "📈 Business, Finance & Digital Marketing",
+    title: "Business, Finance & Digital Marketing",
     desc: "You are motivated by trade, budgets, financial planning, and communications. Kenya's strong financial hub in Nairobi supports growing numbers of startup businesses, digital marketing firms, and financial analysts.",
     kcse: "Mean Grade of C+ or above, with strong grades in Mathematics and English/Kiswahili.",
     courses: "Bachelor of Commerce (BCom), Business Administration, Financial Engineering, or professional courses like Certified Public Accountants (CPA) / Certified Financial Analyst (CFA).",
@@ -199,7 +199,7 @@ const careerDetails = {
     demand: "Moderate / High"
   },
   medicine: {
-    title: "🏥 Healthcare & Clinical Sciences",
+    title: "Healthcare & Clinical Sciences",
     desc: "You are driven to care for people, understand physiology, and treat ailments. Public health and clinical medicine are crucial career tracks in Kenya, providing vital services in hospitals and community clinics.",
     kcse: "Mean Grade of C+ or B- and above, with strong grades in Biology, Chemistry, Mathematics/Physics, and English/Kiswahili.",
     courses: "BSc in Nursing, Bachelor of Medicine and Bachelor of Surgery (MBChB), Clinical Medicine & Community Health, or Diplomas at KMTC (Kenya Medical Training College).",
@@ -257,19 +257,19 @@ function showQuizResults() {
       
       <div class="career-details-specs">
         <div class="spec-item">
-          <strong>🎓 Academic Requirement</strong>
+          <strong>Academic Requirement</strong>
           <span>${details.kcse}</span>
         </div>
         <div class="spec-item">
-          <strong>📚 Typical Pathways</strong>
+          <strong>Typical Pathways</strong>
           <span>${details.courses}</span>
         </div>
         <div class="spec-item">
-          <strong>💰 Est. Salary (Monthly)</strong>
+          <strong>Est. Salary (Monthly)</strong>
           <span>${details.salary}</span>
         </div>
         <div class="spec-item">
-          <strong>📈 Job Demand</strong>
+          <strong>Job Demand</strong>
           <span>${details.demand}</span>
         </div>
       </div>
@@ -300,7 +300,7 @@ const pathwaysList = [
     sector: "Healthcare",
     kcse: "C+ Average, C+ Bio/Chem/Eng",
     tvet: "KMTC Colleges (Diploma in Clinical Medicine)",
-    uni: "Mount Kenya Uni, Egerton University",
+    uni: "Mount Kenya Uni, Karatina University , Egerton University",
     demand: "High",
     salary: "KSh 40,000 – 90,000"
   },

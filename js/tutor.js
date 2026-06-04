@@ -85,7 +85,7 @@ const quickQuestions = {
 // ── AI Response Engine ──────────────────────────────────────
 const aiResponses = {
   mathematics: {
-    'pythagoras': `Great question! 📐 **Pythagoras' Theorem** states that in a right-angled triangle:
+    'pythagoras': `Great question!  **Pythagoras' Theorem** states that in a right-angled triangle:
 
 **a² + b² = c²**
 
@@ -99,7 +99,7 @@ Step 1: Write the formula → c² = a² + b²
 Step 2: Substitute → c² = 3² + 4² = 9 + 16 = 25
 Step 3: Square root → c = √25 = **5 cm**
 
-This is called a **3-4-5 Pythagorean triple** — very common in KCSE! 🎯
+This is called a **3-4-5 Pythagorean triple** — very common in KCSE! 
 
 Other common triples to memorize: 5-12-13, 8-15-17`,
 
@@ -117,7 +117,7 @@ x = (-b ± √(b² - 4ac)) / 2a
 **Method 3: Completing the Square**
 Used when factorisation doesn't work easily.
 
-💡 **KCSE Tip:** Always check your answers by substituting back into the original equation!`,
+ **KCSE Tip:** Always check your answers by substituting back into the original equation!`,
 
     'default': `That's a great mathematics question! Let me break this down step by step.
 
@@ -132,7 +132,7 @@ Could you give me more detail about what specifically you'd like help with? For 
 - A question from your textbook or past paper
 - A concept you find confusing
 
-I'm here to help! 😊`,
+I'm here to help! `,
   },
 
   science: {
@@ -154,10 +154,10 @@ I'm here to help! 😊`,
    - Uses the ATP and NADPH from Stage 1
 
 **Factors affecting photosynthesis:**
-- Light intensity 💡
-- Carbon dioxide concentration 🌬️
-- Temperature 🌡️
-- Water availability 💧
+- Light intensity 
+- Carbon dioxide concentration 
+- Temperature 
+- Water availability 
 
 This is a very common KCSE topic — make sure you can draw and label the chloroplast! 🔬`,
 
@@ -177,11 +177,11 @@ Could you tell me more specifically what aspect you need help with? I can:
 - Provide diagrams and explanations
 - Help you understand experiments
 
-What would you like to focus on? 🌟`,
+What would you like to focus on? `,
   },
 
   english: {
-    'essay': `Writing a great essay introduction is a crucial skill! Here's a proven structure: ✍️
+    'essay': `Writing a great essay introduction is a crucial skill! Here's a proven structure: 
 
 **The 3-Part Introduction Formula:**
 
@@ -201,7 +201,7 @@ Clearly state your main argument or purpose. This is the most important part!
 **Example Introduction:**
 *"Education is the cornerstone of national development. In Kenya, access to quality education has transformed millions of lives, yet significant challenges remain. This essay argues that digital learning platforms can bridge educational gaps and improve outcomes for all learners across the country."*
 
-💡 **Common Mistakes to Avoid:**
+ **Common Mistakes to Avoid:**
 - Don't start with "In this essay I will..."
 - Don't make your hook too dramatic or unrelated
 - Make sure your thesis is specific and arguable`,
@@ -210,7 +210,7 @@ Clearly state your main argument or purpose. This is the most important part!
 
 Let me help you with that. In the CBC curriculum, English covers:
 
-📚 **Key Areas:**
+ **Key Areas:**
 - **Language** — Grammar, vocabulary, punctuation
 - **Literature** — Prose, poetry, drama, oral literature  
 - **Composition** — Essays, letters, reports, creative writing
@@ -221,26 +221,26 @@ To give you the most helpful answer, could you:
 2. Tell me which area of English you need help with?
 3. Share any text or question from your book?
 
-I'm ready to help you master English! 📖`,
+I'm ready to help you master English! `,
   },
 
   default: `That's an interesting question! Let me help you with that.
 
 I can provide comprehensive support across all CBC curriculum subjects. For the best help:
 
-🎯 **To get a targeted answer:**
+ **To get a targeted answer:**
 1. Make sure you've selected the right subject in the sidebar
 2. Be as specific as possible about what you need
 3. Feel free to paste the exact question from your textbook
 
-📚 **I can help with:**
+ **I can help with:**
 - Concept explanations with examples
 - Step-by-step problem solving  
 - Past paper question practice
 - Study tips and strategies
 - Exam preparation guidance
 
-Ask me anything and I'll do my best to explain it clearly! What's on your mind? 😊`,
+Ask me anything and I'll do my best to explain it clearly! What's on your mind? `,
 };
 
 // ── Get AI Response ─────────────────────────────────────────
@@ -326,7 +326,7 @@ function showTypingIndicator() {
   div.className = 'chat-message';
   div.id = 'typing-indicator';
   div.innerHTML = `
-    <div class="chat-avatar ai-avatar">🤖</div>
+    <div class="chat-avatar ai-avatar"></div>
     <div class="chat-bubble ai-bubble">
       <div class="typing-indicator">
         <div class="typing-dot"></div>
@@ -353,7 +353,7 @@ function selectSubject(btn) {
   document.getElementById('active-subject-stat').textContent = name;
   updateQuickQuestions();
   updateResources();
-  showToast(`Switched to ${name} 📚`, 'info', 2000);
+  showToast(`Switched to ${name} `, 'info', 2000);
 }
 
 function updateGrade(select) {
@@ -379,19 +379,19 @@ function askQuickQuestion(question) {
 // ── Update Resources ────────────────────────────────────────
 const subjectResources = {
   mathematics: [
-    { icon: '📹', title: 'KCSE Mathematics Past Papers', type: 'PDF · Practice', url: '#' },
-    { icon: '🧮', title: 'Interactive Algebra Tools', type: 'Tool · Interactive', url: '#' },
-    { icon: '📄', title: 'CBC Mathematics Syllabus', type: 'Document · Reference', url: '#' },
+    { icon: '', title: 'KCSE Mathematics Past Papers', type: 'PDF · Practice', url: '#' },
+    { icon: '', title: 'Interactive Algebra Tools', type: 'Tool · Interactive', url: '#' },
+    { icon: '', title: 'CBC Mathematics Syllabus', type: 'Document · Reference', url: '#' },
   ],
   science: [
-    { icon: '🔬', title: 'Science Experiments Guide', type: 'PDF · Lab Work', url: '#' },
-    { icon: '📹', title: 'Biology Video Lessons', type: 'Video · 25 min', url: '#' },
-    { icon: '📄', title: 'KCSE Science Past Papers', type: 'PDF · Practice', url: '#' },
+    { icon: '', title: 'Science Experiments Guide', type: 'PDF · Lab Work', url: '#' },
+    { icon: '', title: 'Biology Video Lessons', type: 'Video · 25 min', url: '#' },
+    { icon: '', title: 'KCSE Science Past Papers', type: 'PDF · Practice', url: '#' },
   ],
   english: [
-    { icon: '📖', title: 'KCSE Set Books Study Guide', type: 'PDF · Literature', url: '#' },
-    { icon: '✍️', title: 'Essay Writing Templates', type: 'Template · Writing', url: '#' },
-    { icon: '📹', title: 'Grammar Video Series', type: 'Video · 15 min', url: '#' },
+    { icon: '', title: 'KCSE Set Books Study Guide', type: 'PDF · Literature', url: '#' },
+    { icon: '', title: 'Essay Writing Templates', type: 'Template · Writing', url: '#' },
+    { icon: '', title: 'Grammar Video Series', type: 'Video · 15 min', url: '#' },
   ],
 };
 

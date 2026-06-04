@@ -89,10 +89,10 @@ function populateForum() {
   filtered.forEach((post, index) => {
     const originalIndex = forumPosts.indexOf(post);
     const catLabels = {
-      university: '🎓 University Entry',
-      exams: '📝 Exams',
-      teachers: '🧑‍🏫 Teachers',
-      general: '💬 General'
+      university: 'University Entry',
+      exams: 'Exams',
+      teachers: 'Teachers',
+      general: 'General'
     };
     
     html += `
@@ -107,10 +107,10 @@ function populateForum() {
           <span class="post-author">By ${post.author}</span>
           <div class="post-actions">
             <button class="post-action-btn like-btn" onclick="likePost(${originalIndex})">
-              ❤️ <span class="like-count">${post.likes}</span>
+               <span class="like-count">${post.likes}</span>
             </button>
             <button class="post-action-btn" onclick="showToast('Loading answers thread...','info')">
-              💬 ${post.answersCount} Answers
+               ${post.answersCount} Answers
             </button>
           </div>
         </div>
@@ -241,7 +241,7 @@ function populateEvents() {
       <div class="event-card">
         <div class="event-card-body">
           <div class="event-meta-top">
-            <span class="event-date">📅 ${ev.date}</span>
+            <span class="event-date"> ${ev.date}</span>
           </div>
           <h4>${ev.title}</h4>
           <p class="event-desc">${ev.desc}</p>
@@ -315,11 +315,11 @@ function populateResources() {
           <p class="res-desc">${res.desc}</p>
           <div class="res-meta">
             <span>By ${res.author}</span>
-            <span>💾 ${res.downloads} downloads</span>
+            <span> ${res.downloads} downloads</span>
           </div>
         </div>
         <div class="res-actions">
-          <button class="btn btn-ghost btn-sm" onclick="downloadResource(${index})">⬇️ Download PDF</button>
+          <button class="btn btn-ghost btn-sm" onclick="downloadResource(${index})">Download PDF</button>
         </div>
       </div>
     `;
@@ -395,7 +395,6 @@ function populatePartnerships() {
     html += `
       <div class="partnership-card">
         <div class="part-header">
-          <div class="part-school-logo">🏫</div>
           <div>
             <h4>${part.school}</h4>
             <span class="part-partner">Partnered with <strong>${part.uni}</strong></span>

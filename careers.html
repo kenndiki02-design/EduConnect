@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Career Guidance & Mentorship — EduConnect Kenya</title>
   <meta name="description" content="Discover your ideal career path, build a professional CV, browse internship listings, and connect with mentors in Kenyan universities and industries." />
+  <link rel="icon" href="Assets/imges/Gemini_Generated_Image_b741uvb741uvb741.png" />
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/nav.css" />
   <link rel="stylesheet" href="styles/careers.css" />
@@ -14,7 +15,7 @@
 <nav class="navbar" id="navbar">
   <div class="container">
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon">🎓</div>
+      <img src="Assets/imges/Gemini_Generated_Image_b741uvb741uvb741.png" alt="EduConnect Kenya Logo" width="24" height="24">
       Edu<span>Connect</span>
     </a>
     <ul class="nav-links">
@@ -51,7 +52,7 @@
 <div class="page-header">
   <div class="container">
     <div class="page-header-content">
-      <span class="label">🚀 Shape Your Future</span>
+      <span class="label">Shape Your Future</span>
       <h1>Career Guidance &amp; <span class="text-gradient">Mentorship</span></h1>
       <p>Discover your passions, build professional documents, find local opportunities, and connect with mentors in universities and industry sectors across Kenya.</p>
       <div class="header-badges">
@@ -69,11 +70,11 @@
   <div class="container">
     <div id="careers-tabs">
       <div class="tabs" style="max-width:850px; margin:0 auto 48px;">
-        <button class="tab-btn active" data-tab="quiz" onclick="switchTab(this, 'careers-tabs')">🧭 Career Quiz</button>
-        <button class="tab-btn" data-tab="explorer" onclick="switchTab(this, 'careers-tabs')">🔍 Pathway Explorer</button>
-        <button class="tab-btn" data-tab="cv-builder" onclick="switchTab(this, 'careers-tabs')">📄 CV Builder</button>
-        <button class="tab-btn" data-tab="opportunities" onclick="switchTab(this, 'careers-tabs')">💼 Internships</button>
-        <button class="tab-btn" data-tab="mentorship" onclick="switchTab(this, 'careers-tabs')">🤝 Mentorship</button>
+        <button class="tab-btn active" data-tab="quiz" onclick="switchTab(this, 'careers-tabs')">Career Quiz</button>
+        <button class="tab-btn" data-tab="explorer" onclick="switchTab(this, 'careers-tabs')">Pathway Explorer</button>
+        <button class="tab-btn" data-tab="cv-builder" onclick="switchTab(this, 'careers-tabs')">CV Builder</button>
+        <button class="tab-btn" data-tab="opportunities" onclick="switchTab(this, 'careers-tabs')">Internships</button>
+        <button class="tab-btn" data-tab="mentorship" onclick="switchTab(this, 'careers-tabs')">Mentorship</button>
       </div>
 
       <!-- Tab: Career Quiz -->
@@ -117,7 +118,7 @@
           <!-- CV Form -->
           <div class="cv-form-panel">
             <form id="cv-form" oninput="updateCVPreview()" onsubmit="return false;">
-              <div class="form-section-title">👤 Personal Information</div>
+              <div class="form-section-title">Personal Information</div>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Full Name *</label>
@@ -153,7 +154,7 @@
                 <textarea class="form-textarea" id="cv-summary" placeholder="Brief statement about your skills, background, and career goals (1-2 sentences)..." style="min-height:70px;"></textarea>
               </div>
 
-              <div class="form-section-title">🎓 Education</div>
+              <div class="form-section-title">Education</div>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Degree or Certificate</label>
@@ -175,7 +176,7 @@
                 </div>
               </div>
 
-              <div class="form-section-title">💼 Relevant Experience</div>
+              <div class="form-section-title">Relevant Experience</div>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Job Title / Role</label>
@@ -197,7 +198,7 @@
                 </div>
               </div>
 
-              <div class="form-section-title">⚡ Skills &amp; Certifications</div>
+              <div class="form-section-title">Skills &amp; Certifications</div>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Technical &amp; Soft Skills (Comma separated)</label>
@@ -210,8 +211,8 @@
           <!-- CV Preview -->
           <div class="cv-preview-panel">
             <div class="cv-preview-header">
-              <h4>📄 CV Preview</h4>
-              <button class="btn btn-ghost btn-sm" onclick="printCV()">🖨️ Print / Save PDF</button>
+              <h4>CV Preview</h4>
+              <button class="btn btn-ghost btn-sm" onclick="printCV()">Print / Save PDF</button>
             </div>
             <div class="cv-preview-sheet" id="cv-sheet">
               <div class="cv-sheet-header">
@@ -237,7 +238,7 @@
                     <strong id="prev-edu-degree">Bachelor of Science in Computer Science</strong>
                     <span id="prev-edu-year">2026</span>
                   </div>
-                  <div id="prev-edu-school">Kenyatta University</div>
+                  <div id="prev-edu-school">Karatina University</div>
                   <div id="prev-edu-grade" class="text-muted" style="font-size:0.85rem;">Second Class Upper Division</div>
                 </div>
               </div>
@@ -306,9 +307,8 @@
             </div>
 
             <div class="mentor-spotlights">
-              <h5>🌟 Featured Mentors</h5>
+              <h5>Featured Mentors</h5>
               <div class="mentor-spotlight-card">
-                <div class="mentor-spot-avatar">👩‍🔬</div>
                 <div>
                   <strong>Dr. Amina Omondi</strong>
                   <span>Lecturer, University of Nairobi</span>
@@ -316,7 +316,6 @@
                 </div>
               </div>
               <div class="mentor-spotlight-card">
-                <div class="mentor-spot-avatar">🧑‍💻</div>
                 <div>
                   <strong>David Mutua</strong>
                   <span>Software Engineer, Safaricom PLC</span>
@@ -367,7 +366,7 @@
                 <textarea class="form-textarea" id="mentor-req-goals" placeholder="e.g. Help choosing university courses, career paths in tech, exam preparation advice..." required style="min-height:90px;"></textarea>
               </div>
               <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px; margin-top:10px;">
-                Submit Mentorship Request ✉️
+                Submit Mentorship Request 
               </button>
             </form>
           </div>
@@ -382,7 +381,7 @@
   <div class="container">
     <div class="footer-bottom" style="border-top:none; padding-top:0;">
       <p>© 2025 EduConnect Kenya · <a href="index.html" style="color:var(--primary)">Home</a></p>
-      <p>💡 Dream big, plan smart, and take action for your future.</p>
+      <p>Dream big, plan smart, and take action for your future.</p>
     </div>
   </div>
 </footer>

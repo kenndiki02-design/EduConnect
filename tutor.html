@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Tutor — EduConnect Kenya</title>
   <meta name="description" content="Get personalized academic support from EduConnect Kenya's AI Tutor. Ask questions, explore concepts, and receive curriculum-aligned explanations in Mathematics, Science, English, Kiswahili and more." />
-  <link rel="stylesheet" href="styles/main.css" />
+  
+  <link rel="icon" type="favicon" href="Assets/imges/Gemini_Generated_Image_b741uvb741uvb741.png" /><link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/nav.css" />
   <link rel="stylesheet" href="styles/tutor.css" />
 </head>
@@ -14,7 +15,7 @@
 <nav class="navbar" id="navbar">
   <div class="container">
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon">🎓</div>
+      <img src="Assets/imges/Gemini_Generated_Image_b741uvb741uvb741.png" alt="EduConnect Kenya Logo" width="24" height="24">
       Edu<span>Connect</span>
     </a>
     <ul class="nav-links">
@@ -51,7 +52,7 @@
 <div class="page-header">
   <div class="container">
     <div class="page-header-content">
-      <span class="label">🤖 AI-Powered</span>
+      <span class="label">AI-Powered</span>
       <h1>Your Personal <span class="text-gradient">AI Tutor</span></h1>
       <p>Get instant, personalized academic support aligned to Kenya's CBC curriculum. Ask any question — your AI tutor is always ready to help.</p>
       <div class="tutor-header-badges">
@@ -72,53 +73,43 @@
       <!-- Sidebar -->
       <aside class="tutor-sidebar">
         <div class="sidebar-section">
-          <h4 class="sidebar-title">📚 Select Subject</h4>
+          <h4 class="sidebar-title">Select Subject</h4>
           <div class="subject-list" id="subject-list">
             <button class="subject-btn active" data-subject="mathematics" onclick="selectSubject(this)">
-              <span class="subject-icon">🔢</span>
               <span>Mathematics</span>
             </button>
             <button class="subject-btn" data-subject="science" onclick="selectSubject(this)">
-              <span class="subject-icon">🔬</span>
               <span>Science</span>
             </button>
             <button class="subject-btn" data-subject="english" onclick="selectSubject(this)">
-              <span class="subject-icon">📖</span>
               <span>English</span>
             </button>
             <button class="subject-btn" data-subject="kiswahili" onclick="selectSubject(this)">
-              <span class="subject-icon">🗣️</span>
               <span>Kiswahili</span>
             </button>
             <button class="subject-btn" data-subject="history" onclick="selectSubject(this)">
-              <span class="subject-icon">🏛️</span>
               <span>History & Government</span>
             </button>
             <button class="subject-btn" data-subject="geography" onclick="selectSubject(this)">
-              <span class="subject-icon">🌍</span>
               <span>Geography</span>
             </button>
             <button class="subject-btn" data-subject="chemistry" onclick="selectSubject(this)">
-              <span class="subject-icon">⚗️</span>
               <span>Chemistry</span>
             </button>
             <button class="subject-btn" data-subject="biology" onclick="selectSubject(this)">
-              <span class="subject-icon">🧬</span>
               <span>Biology</span>
             </button>
             <button class="subject-btn" data-subject="physics" onclick="selectSubject(this)">
-              <span class="subject-icon">⚡</span>
               <span>Physics</span>
             </button>
             <button class="subject-btn" data-subject="ict" onclick="selectSubject(this)">
-              <span class="subject-icon">💻</span>
               <span>ICT</span>
             </button>
           </div>
         </div>
 
         <div class="sidebar-section">
-          <h4 class="sidebar-title">🎓 Grade Level</h4>
+          <h4 class="sidebar-title">Grade Level</h4>
           <select class="form-select" id="grade-select" onchange="updateGrade(this)">
             <optgroup label="Primary School">
               <option value="grade1">Grade 1</option>
@@ -149,14 +140,14 @@
         </div>
 
         <div class="sidebar-section">
-          <h4 class="sidebar-title">💡 Quick Questions</h4>
+          <h4 class="sidebar-title">Quick Questions</h4>
           <div class="quick-questions" id="quick-questions">
             <!-- Populated by JS -->
           </div>
         </div>
 
         <div class="sidebar-section">
-          <h4 class="sidebar-title">📊 Session Stats</h4>
+          <h4 class="sidebar-title">Session Stats</h4>
           <div class="session-stats">
             <div class="stat-row">
               <span class="stat-label">Questions Asked</span>
@@ -174,7 +165,7 @@
         </div>
 
         <button class="btn btn-ghost btn-sm" style="width:100%;margin-top:8px;" onclick="clearChat()">
-          🗑️ Clear Chat
+         Clear Chat
         </button>
       </aside>
 
@@ -182,7 +173,6 @@
       <div class="tutor-main">
         <div class="chat-header">
           <div class="chat-header-info">
-            <div class="ai-avatar-large">🤖</div>
             <div>
               <div class="chat-name">EduBot — AI Tutor</div>
               <div class="chat-status"><span class="status-dot"></span> Online & Ready</div>
@@ -197,9 +187,8 @@
         <div class="chat-container" id="chat-container">
           <div class="chat-messages" id="chat-messages">
             <div class="chat-message">
-              <div class="chat-avatar ai-avatar">🤖</div>
               <div class="chat-bubble ai-bubble">
-                <strong>Habari! Welcome to EduConnect Kenya's AI Tutor! 🎓</strong><br/><br/>
+                <strong>Habari! Welcome to EduConnect Kenya's AI Tutor! </strong><br/><br/>
                 I'm EduBot, your personal learning assistant. I can help you with:
                 <ul style="margin:10px 0 0 16px; color:var(--text-secondary);">
                   <li>Explaining difficult concepts step-by-step</li>
@@ -208,7 +197,7 @@
                   <li>Recommending study resources</li>
                   <li>Preparing for KCSE and CBC assessments</li>
                 </ul>
-                <br/>Select a subject and ask me anything! What would you like to learn today? 😊
+                <br/>Select a subject and ask me anything! What would you like to learn today? 
               </div>
             </div>
           </div>
@@ -230,10 +219,9 @@
 
         <!-- Resource Recommendations -->
         <div class="resource-panel" id="resource-panel">
-          <h4 class="resource-panel-title">📚 Recommended Resources</h4>
+          <h4 class="resource-panel-title">Recommended Resources</h4>
           <div class="resource-cards" id="resource-cards">
             <div class="resource-card">
-              <div class="resource-icon">📹</div>
               <div class="resource-info">
                 <div class="resource-title">KhanAcademy — Algebra Basics</div>
                 <div class="resource-type">Video · 12 min</div>
@@ -241,7 +229,6 @@
               <a href="#" class="btn btn-ghost btn-sm">View →</a>
             </div>
             <div class="resource-card">
-              <div class="resource-icon">📄</div>
               <div class="resource-info">
                 <div class="resource-title">KCSE Mathematics Past Papers</div>
                 <div class="resource-type">PDF · Practice</div>
@@ -249,7 +236,6 @@
               <a href="#" class="btn btn-ghost btn-sm">View →</a>
             </div>
             <div class="resource-card">
-              <div class="resource-icon">🧮</div>
               <div class="resource-info">
                 <div class="resource-title">Interactive Formula Sheet</div>
                 <div class="resource-type">Tool · Interactive</div>
@@ -266,7 +252,7 @@
 <!-- Tips Section -->
 <section class="section-sm tutor-tips-section">
   <div class="container">
-    <h3 class="text-center" style="margin-bottom:32px;">Tips for Getting the Best from EduBot 💡</h3>
+    <h3 class="text-center" style="margin-bottom:32px;">Tips for Getting the Best from EduBot </h3>
     <div class="tips-grid">
       <div class="tip-card animate-on-scroll">
         <div class="tip-num">01</div>
