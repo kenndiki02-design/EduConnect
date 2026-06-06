@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
+const app = express();
 const session = require('express-session');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
@@ -474,37 +475,17 @@ function requireAdmin(req, res, next) {
 
 // Register
 app.post('/api/auth/register', async (req, res) => {
+  console.log("Registration attempt received!");
+
   try {
     const { username, email, password, role, full_name } = req.body;
 
-    if (!username || !email || !password || !role) {
-      return res.status(400).json({ success: false, message: 'All fields (username, email, password, role) are required.' });
-    }
-
-    const validRoles = ['student', 'teacher', 'school', 'parent', 'community', 'admin'];
-    if (!validRoles.includes(role)) {
-      return res.status(400).json({ success: false, message: 'Invalid role specified.' });
-    }
-
-    const existingUser = db.prepare('SELECT id FROM users WHERE email = ?').get(email);
-    if (existingUser) {
-      return res.status(409).json({ success: false, message: 'A user with this email already exists.' });
-    }
-
-    const hashedPassword = bcrypt.hashSync(password, 10);
-    const verificationToken = crypto.randomBytes(32).toString('hex');
-    
     const result = db.prepare(
       'INSERT INTO users (username, email, password_hash, role, full_name, email_verification_token) VALUES (?, ?, ?, ?, ?, ?)'
     ).run(username, email, hashedPassword, role, full_name || '', verificationToken);
 
     req.session.userId = result.lastInsertRowid;
-    req.session.username = username;
-    req.session.email = email;
-    req.session.role = role;
-    req.session.fullName = full_name || '';
 
-    // Send verification email
     const verifyLink = `${APP_URL}/verify-email.html?token=${verificationToken}&email=${encodeURIComponent(email)}`;
     if (resend) {
       try {
@@ -512,38 +493,18 @@ app.post('/api/auth/register', async (req, res) => {
           from: SENDER_EMAIL,
           to: email,
           subject: '🎓 Welcome to EduConnect Kenya - Verify Your Email',
-          html: `
-            <h2>Welcome to EduConnect Kenya! 🇰🇪</h2>
-            <p>Hi ${username},</p>
-            <p>Thank you for joining EduConnect Kenya! Please verify your email address to activate your account:</p>
-            <p><a href="${verifyLink}" style="background: #00A86B; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block;">Verify Email</a></p>
-            <p>Or copy this link: <br><code>${verifyLink}</code></p>
-            <p>Once verified, you'll have full access to:</p>
-            <ul>
-              <li>🤖 AI Tutoring System</li>
-              <li>📝 Lesson Plan Generator</li>
-              <li>💚 Wellness Resources</li>
-              <li>🚀 Career Guidance</li>
-              <li>💻 Digital Skills Training</li>
-              <li>🤝 Community Hub</li>
-            </ul>
-            <p><strong>This link expires in 24 hours.</strong></p>
-            <br>
-            <p>Best regards,<br>EduConnect Kenya Team 🎓</p>
-          `
         });
         console.log(`✅ Welcome email sent to ${email}`);
       } catch (emailErr) {
         console.error('Resend error:', emailErr.message);
-        // Still proceed with registration even if email fails
       }
     } else {
-      // Fallback: log link for development
-      console.log(`\n✉️  Email verification link for ${email}: ${verifyLink}\n`);
+      console.log(`\n✉️ Email verification link for ${email}: ${verifyLink}\n`);
     }
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
+      message: 'Registration successful. Please verify your email.',
       user: {
         id: result.lastInsertRowid,
         username,
@@ -552,9 +513,10 @@ app.post('/api/auth/register', async (req, res) => {
         full_name: full_name || ''
       }
     });
+
   } catch (err) {
     console.error('Register error:', err.message);
-    res.status(500).json({ success: false, message: 'Server error during registration.' });
+    return res.status(500).json({ success: false, message: 'Server error during registration.' });
   }
 });
 
@@ -1212,6 +1174,7 @@ app.delete('/api/admin/resources/:id', requireAdmin, (req, res) => {
 });
 
 // ─── Serve Static Files (after API routes) ───────────────────────────────────────
+app.use(express.json());
 app.use(express.static('.'));
 
 // ─── Server Start ────────────────────────────────────────────────────────────────
