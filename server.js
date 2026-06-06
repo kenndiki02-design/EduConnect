@@ -1225,11 +1225,3 @@ app.listen(PORT, () => {
     console.log(`   Set RESEND_API_KEY in .env to enable email sending.\n`);
   }
 });
-
-const express = require('express');
-const app = express();
-
-// Your routes...
-
-// DO NOT USE app.listen(3000) inside your main code for production
-module.exports = app;
