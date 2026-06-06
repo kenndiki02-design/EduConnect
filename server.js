@@ -436,34 +436,60 @@ seedAdmin();
 const app = express();
 
 // ─── Middleware ──────────────────────────────────────────────────────────────────
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const jwt = require('jsonwebtoken');
+const JWT_SECRET = process.env.JWT_SECRET || 'educonnect-secret-key-2024';
 
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true
-}));
+// New auth middleware using JWT
+function requireAuth(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
 
-app.use(session({
-  secret: 'educonnect-secret-key-2024',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 24 * 60 * 60 * 1000 }
-}));
+  if (!token) {
+    return res.status(401).json({ success: false, message: 'Authentication required. Please log in.' });
+  }
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(401).json({ success: false, message: 'Invalid or expired token.' });
+    }
+    req.user = user;
+    next();
+  });
+}
+
+function requireAdmin(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ success: false, message: 'Authentication required. Please log in.' });
+  }
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(401).json({ success: false, message: 'Invalid or expired token.' });
+    }
+    if (user.role !== 'admin') {
+      return res.status(403).json({ success: false, message: 'Admin access required.' });
+    }
+    req.user = user;
+    next();
+  });
+}
 
 // ─── Auth Middleware ─────────────────────────────────────────────────────────────
 function requireAuth(req, res, next) {
-  if (!req.session.userId) {
+  if (!req.user.userId) {
     return res.status(401).json({ success: false, message: 'Authentication required. Please log in.' });
   }
   next();
 }
 
 function requireAdmin(req, res, next) {
-  if (!req.session.userId) {
+  if (!req.user.userId) {
     return res.status(401).json({ success: false, message: 'Authentication required. Please log in.' });
   }
-  if (req.session.role !== 'admin') {
+  if (req.user.role !== 'admin') {
     return res.status(403).json({ success: false, message: 'Admin access required.' });
   }
   next();
@@ -484,7 +510,29 @@ app.post('/api/auth/register', async (req, res) => {
       'INSERT INTO users (username, email, password_hash, role, full_name, email_verification_token) VALUES (?, ?, ?, ?, ?, ?)'
     ).run(username, email, hashedPassword, role, full_name || '', verificationToken);
 
-    req.session.userId = result.lastInsertRowid;
+const token = jwt.sign(
+  {
+    id: result.lastInsertRowid,
+    username: username,
+    email: email,
+    role: role,
+    fullName: full_name || ''
+  },
+  JWT_SECRET,
+  { expiresIn: '24h' }
+);
+
+res.status(201).json({
+  success: true,
+  token,
+  user: {
+    id: result.lastInsertRowid,
+    username,
+    email,
+    role,
+    full_name: full_name || ''
+  }
+});
 
     const verifyLink = `${APP_URL}/verify-email.html?token=${verificationToken}&email=${encodeURIComponent(email)}`;
     if (resend) {
@@ -539,14 +587,22 @@ app.post('/api/auth/login', (req, res) => {
       return res.status(401).json({ success: false, message: 'Invalid email or password.' });
     }
 
-    req.session.userId = user.id;
-    req.session.username = user.username;
-    req.session.email = user.email;
-    req.session.role = user.role;
-    req.session.fullName = user.full_name;
+    // Create JWT token instead of session
+    const token = jwt.sign(
+      {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        role: user.role,
+        fullName: user.full_name
+      },
+      JWT_SECRET,
+      { expiresIn: '24h' }
+    );
 
     res.json({
       success: true,
+      token,
       user: {
         id: user.id,
         username: user.username,
@@ -751,26 +807,11 @@ app.post('/api/auth/resend-verification', async (req, res) => {
 });
 
 // Auth Status
-app.get('/api/auth/status', (req, res) => {
-  try {
-    if (req.session.userId) {
-      res.json({
-        loggedIn: true,
-        user: {
-          id: req.session.userId,
-          username: req.session.username,
-          email: req.session.email,
-          role: req.session.role,
-          fullName: req.session.fullName
-        }
-      });
-    } else {
-      res.json({ loggedIn: false });
-    }
-  } catch (err) {
-    console.error('Auth status error:', err.message);
-    res.status(500).json({ loggedIn: false, message: 'Server error checking auth status.' });
-  }
+app.get('/api/auth/status', requireAuth, (req, res) => {
+  res.json({
+    loggedIn: true,
+    user: req.user
+  });
 });
 
 // ═════════════════════════════════════════════════════════════════════════════════
@@ -809,7 +850,7 @@ app.post('/api/forum', requireAuth, (req, res) => {
 
     const result = db.prepare(
       'INSERT INTO forum_posts (title, category, author_id, author_name, body) VALUES (?, ?, ?, ?, ?)'
-    ).run(title, category || 'General', req.session.userId, req.session.username, body || '');
+    ).run(title, category || 'General', req.user.userId, req.user.username, body || '');
 
     const newPost = db.prepare('SELECT * FROM forum_posts WHERE id = ?').get(result.lastInsertRowid);
     res.status(201).json({ success: true, post: newPost });
@@ -849,7 +890,7 @@ app.delete('/api/forum/:id', requireAuth, (req, res) => {
       return res.status(404).json({ success: false, message: 'Post not found.' });
     }
 
-    if (post.author_id !== req.session.userId && req.session.role !== 'admin') {
+    if (post.author_id !== req.user.userId && req.user.role !== 'admin') {
       return res.status(403).json({ success: false, message: 'You can only delete your own posts.' });
     }
 
@@ -897,7 +938,7 @@ app.post('/api/resources', requireAuth, (req, res) => {
 
     const result = db.prepare(
       'INSERT INTO shared_resources (title, subject, author_id, author_name, description, file_url) VALUES (?, ?, ?, ?, ?, ?)'
-    ).run(title, subject || '', req.session.userId, req.session.username, description || '', file_url || '');
+    ).run(title, subject || '', req.user.id, req.user.username, description || '', file_url || '');
 
     const newResource = db.prepare('SELECT * FROM shared_resources WHERE id = ?').get(result.lastInsertRowid);
     res.status(201).json({ success: true, resource: newResource });
@@ -932,7 +973,7 @@ app.delete('/api/resources/:id', requireAuth, (req, res) => {
   try {
     const { id } = req.params;
 
-    if (req.session.role !== 'admin') {
+    if (req.user.role !== 'admin') {
       return res.status(403).json({ success: false, message: 'Admin access required to delete resources.' });
     }
 
@@ -958,7 +999,7 @@ app.get('/api/lessons', requireAuth, (req, res) => {
   try {
     const lessons = db.prepare(
       'SELECT * FROM lesson_plans WHERE user_id = ? ORDER BY created_at DESC'
-    ).all(req.session.userId);
+    ).all(req.user.id);
 
     res.json({ lessons });
   } catch (err) {
@@ -978,7 +1019,7 @@ app.post('/api/lessons', requireAuth, (req, res) => {
 
     const result = db.prepare(
       'INSERT INTO lesson_plans (user_id, title, subject, grade, content) VALUES (?, ?, ?, ?, ?)'
-    ).run(req.session.userId, title, subject || '', grade || '', content || '');
+    ).run(req.user.id, title, subject || '', grade || '', content || '');
 
     const newLesson = db.prepare('SELECT * FROM lesson_plans WHERE id = ?').get(result.lastInsertRowid);
     res.status(201).json({ success: true, lesson: newLesson });
@@ -1000,7 +1041,7 @@ app.post('/api/events/register', requireAuth, (req, res) => {
       return res.status(400).json({ success: false, message: 'Event ID is required.' });
     }
 
-    db.prepare('INSERT INTO event_registrations (user_id, event_id) VALUES (?, ?)').run(req.session.userId, event_id);
+    db.prepare('INSERT INTO event_registrations (user_id, event_id) VALUES (?, ?)').run(req.user.id, event_id);
     res.status(201).json({ success: true, message: 'Registered for event successfully.' });
   } catch (err) {
     console.error('Event registration error:', err.message);
@@ -1011,7 +1052,7 @@ app.post('/api/events/register', requireAuth, (req, res) => {
 // Retrieve current user's event registrations
 app.get('/api/events/my-registrations', requireAuth, (req, res) => {
   try {
-    const registrations = db.prepare('SELECT * FROM event_registrations WHERE user_id = ?').all(req.session.userId);
+    const registrations = db.prepare('SELECT * FROM event_registrations WHERE user_id = ?').all(req.user.id);
     res.json({ registrations });
   } catch (err) {
     console.error('Get event registrations error:', err.message);
@@ -1028,7 +1069,7 @@ app.post('/api/mentorship/request', requireAuth, (req, res) => {
     }
 
     db.prepare('INSERT INTO mentorship_requests (user_id, topic, message) VALUES (?, ?, ?)')
-      .run(req.session.userId, topic, message || '');
+      .run(req.user.id, topic, message || '');
 
     res.status(201).json({ success: true, message: 'Mentorship request submitted successfully.' });
   } catch (err) {
@@ -1088,7 +1129,7 @@ app.delete('/api/admin/users/:id', requireAdmin, (req, res) => {
   try {
     const { id } = req.params;
 
-    if (Number(id) === req.session.userId) {
+    if (Number(id) === req.user.id) {
       return res.status(400).json({ success: false, message: 'You cannot delete your own account.' });
     }
 
@@ -1178,13 +1219,4 @@ app.use(express.json());
 app.use(express.static('.'));
 
 // ─── Server Start ────────────────────────────────────────────────────────────────
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`\n🚀 EduConnect Kenya server running at http://localhost:${PORT}`);
-  if (resend) {
-    console.log(`✅ Resend email service configured`);
-  } else {
-    console.log(`⚠️  Resend API key not configured. Verification links will be logged to console.`);
-    console.log(`   Set RESEND_API_KEY in .env to enable email sending.\n`);
-  }
-});
+module.exports = app;
